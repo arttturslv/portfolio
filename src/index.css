@@ -1,0 +1,26 @@
+/** @format */
+
+@import "tailwindcss";
+
+@font-face {
+  font-family: Supreme;
+  font-style: normal;
+  font-weight: 100 200 300 400 500 600 700 800 900;
+  font-display: swap;
+  src: url("/fonts/Supreme.ttf") format(".ttf");
+}
+
+@font-face {
+  font-family: Khand;
+  font-style: normal;
+  font-weight: 100 200 300 400 500 600 700 800 900;
+  font-display: swap;
+  src: url("/fonts/Khand.ttf") format(".ttf");
+}
+
+@theme {
+  --font-khan: "Khand", sans-serif;
+  --font-sans: "Supreme", sans-serif;
+  --color-light: "#0C090D";
+  --color-dark: "#F1F2F6";
+}
