@@ -6,7 +6,7 @@ import Footer from "../../components/footer";
 import BentoItem from "./components/bentoItem";
 
 function Doodles() {
-  const data = Array.from({ length: 10 }, (_, i) => ({
+  const data = Array.from({ length: 10 }, (_, _i) => ({
     date: "20/08/2005",
     srcImage: "/assets/doodles/test.png",
   }));
