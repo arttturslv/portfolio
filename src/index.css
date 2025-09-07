@@ -3,24 +3,24 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: Supreme;
+  font-family: "Supreme";
+  src: url("/fonts/Supreme.ttf") format("truetype");
+  font-weight: 100 900; /* se for variable font */
   font-style: normal;
-  font-weight: 100 200 300 400 500 600 700 800 900;
   font-display: swap;
-  src: url("/fonts/Supreme.ttf") format(".ttf");
 }
 
 @font-face {
-  font-family: Khand;
+  font-family: "Khand";
+  src: url("/fonts/Khand.ttf") format("truetype");
+  font-weight: 100 900; /* idem */
   font-style: normal;
-  font-weight: 100 200 300 400 500 600 700 800 900;
   font-display: swap;
-  src: url("/fonts/Khand.ttf") format(".ttf");
 }
 
 @theme {
   --font-khan: "Khand", sans-serif;
   --font-sans: "Supreme", sans-serif;
-  --color-light: "#0C090D";
-  --color-dark: "#F1F2F6";
+  --color-light: #0c090d; /* sem aspas */
+  --color-dark: #f1f2f6;
 }

@@ -22,7 +22,7 @@ export default function ProjectItem({
 }: ProjectItemProps) {
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col gap-2">
         <div className="w-full rounded-lg flex justify-center items-center bg-amber-300 max-sm:h-[250px]">
           <img
             src={mainImageSrc}

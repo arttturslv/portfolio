@@ -2,16 +2,16 @@
 
 export default function Footer() {
   return (
-    <footer className="py-2">
-      <section className="flex justify-between">
-        <div className="w-60">
-          <p>
+    <footer className="py-2 max-sm:space-y-4">
+      <section className="flex justify-between sm:flex-row flex-col max-sm:space-y-4">
+        <div className=" w-full sm:w-60">
+          <p className="max-sm:text-center">
             developer | designer frontend | tech passionated | curious | trying
             things
           </p>
         </div>
         <div>
-          <span>Socials</span>
+          <span className="max-sm:hidden">Socials</span>
           <div className="w-full  gap-2 flex justify-center">
             <a
               href="https://github.com/arttturslv"

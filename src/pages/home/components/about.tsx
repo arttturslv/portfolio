@@ -69,13 +69,13 @@ export default function About() {
     });
   }, []);
   return (
-    <section className="my-48 space-y-12">
-      <div className=" flex gap-12 flex-col  justify-center">
+    <section className=" space-y-12">
+      <div className=" flex md:gap-12 gap-6 flex-col  justify-center">
         <div
           ref={containerRef}
           onMouseEnter={() => tl.current?.play()}
           onMouseLeave={() => tl.current?.reverse()}
-          className="w-full  group flex items-center justify-center"
+          className="w-full  group flex items-center justify-center "
         >
           <div className="relative group w-72">
             <img
@@ -109,11 +109,13 @@ export default function About() {
         </div>
 
         <div className="space-y-3">
-          <p className="text-3xl font-light">
+          <p className="lg:text-4xl md:text-3xl text-2xl font-light">
             I’m a developer based in Belo Horizonte — the capital of cheese 🧀.
             Passionate about crafting high-quality digital experiences, putting
-            ideas into code. Amazed by little things, nature, food, art,
-            technology & the capacities of our species.
+            ideas into code.
+            <br></br>
+            Amazed by little things, nature, food, art, technology & the
+            capacities of our species.
           </p>
 
           <a

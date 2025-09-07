@@ -4,15 +4,19 @@ export default function Hero() {
   return (
     <main className="h-screen  flex justify-center space-y-2 flex-col items-center">
       <div className="flex flex-col gap-2 items-center justify-center">
-        <p className=" text-3xl">Olá, meu nome é</p>
+        <p className=" text-3xl max-sm:text-2xl">Olá, meu nome é</p>
 
         <span className="flex group ">
-          <h1 className="font-khan font-extrabold text-9xl ">Art</h1>
-          <h1 className="font-khan font-extrabold text-9xl overflow-hidden max-w-0 group-hover:max-w-[5.4rem] transition-all duration-200 ease-out">
+          <h1 className="font-khan font-extrabold text-9xl max-sm:text-8xl">
+            Art
+          </h1>
+          <h1 className="font-khan font-extrabold text-9xl max-sm:text-8xl overflow-hidden max-w-0 group-hover:max-w-[5.4rem] transition-all duration-200 ease-out">
             {" "}
             tt
           </h1>
-          <h1 className="font-khan font-extrabold text-9xl">ur</h1>
+          <h1 className="font-khan font-extrabold text-9xl max-sm:text-8xl">
+            ur
+          </h1>
         </span>
 
         <div className="w-full gap-12 flex justify-center">

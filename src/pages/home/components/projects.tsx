@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import TechShowcase from "./techShowcase";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,29 +14,24 @@ type Project = {
 
 const projects: Project[] = [
   {
-    name: "RUSHED",
-    description: "Fast-paced project showcase",
-    image: "/assets/images/image.png",
-  },
-  {
     name: "CONGRATS",
     description: "New way of congratulating people",
-    image: "/assets/images/image.png",
+    image: "/assets/images/projects/congrats/main.png",
   },
   {
-    name: "ANOTAAI",
-    description: "Note-taking app",
-    image: "/assets/images/image.png",
+    name: "POSTAAI",
+    description: "Our online post it mural",
+    image: "/assets/images/projects/postaai/main.png",
   },
   {
     name: "ENCURTAAI",
-    description: "URL shortener project",
-    image: "/assets/images/image.png",
+    description: "Short that link",
+    image: "/assets/images/projects/encurtaai/main.png",
   },
   {
-    name: "FLEEBNOW",
-    description: "Delivery platform",
-    image: "/assets/images/image.png",
+    name: "SABIO",
+    description: "Need some advice? See your online guru",
+    image: "/assets/images/projects/guru/main.png",
   },
 ];
 
@@ -102,57 +98,17 @@ export default function Projects() {
   }, [activeIndex]);
 
   return (
-    <section className="my-48 space-y-32">
-      <div className="space-y-6 flex flex-col items-center">
-        <h3>here some of my best skills</h3>
-        <div className="flex gap-18">
-          <span className="flex flex-col gap-1 items-center">
-            <img src="assets/images/techstack/js.png" className="w-14" alt="" />
-            <label className="text-sm">JavaScript</label>
-          </span>
-
-          <span className="flex flex-col gap-1 items-center">
-            <img src="assets/images/techstack/ts.png" className="w-14" alt="" />
-            <label className="text-sm">TypeScript</label>
-          </span>
-
-          <span className="flex flex-col gap-1 items-center">
-            <img
-              src="assets/images/techstack/react.png"
-              className="w-14"
-              alt=""
-            />
-            <label className="text-sm">React</label>
-          </span>
-
-          <span className="flex flex-col gap-1 items-center">
-            <img
-              src="assets/images/techstack/tailwind.png"
-              className="w-14"
-              alt=""
-            />
-            <label className="text-sm">Tailwind</label>
-          </span>
-
-          <span className="flex flex-col gap-1 items-center">
-            <img
-              src="assets/images/techstack/figma.png"
-              className="w-14"
-              alt=""
-            />
-            <label className="text-sm">Figma</label>
-          </span>
-        </div>
-      </div>
+    <section className="my-48 sm:space-y-32  ">
+      <TechShowcase />
 
       <div>
         <div
           ref={containerRef}
-          className="relative w-full h-[60vh] md:h-[70vh] lg:h-[75vh] overflow-hidden"
+          className="relative w-full h-[50vh] md:h-[70vh]  lg:h-[75vh] overflow-hidden"
           aria-label="projects-scroll-container"
         >
-          <div className="absolute left-0 top-0 bottom-0 w-1/3 flex items-center justify-center pointer-events-auto">
-            <div className="flex flex-col space-y-4 text-3xl font-bold pl-8">
+          <div className="absolute left-0 top-0  bottom-0 w-1/3 flex items-center justify-center pointer-events-auto">
+            <div className="flex flex-col space-y-4 text-3xl font-bold pl-8 max-sm:hidden">
               {projects.map((proj, i) => (
                 <button
                   key={proj.name}
@@ -184,20 +140,21 @@ export default function Projects() {
           </div>
 
           {/* conteúdo (à direita) */}
-          <div className="absolute right-0 top-0 bottom-0 w-2/3 flex items-center justify-center">
+          <div className="absolute max-sm:w-full  right-0 top-0 bottom-0 w-2/3 flex items-center justify-center">
             <div
               ref={projectRef}
-              className="relative w-full h-full flex flex-col gap-2 items-start justify-center"
+              className="relative  w-full h-full flex flex-col gap-2 items-center  justify-center"
             >
               {/* fade top */}
 
               <img
                 src={projects[activeIndex].image}
                 alt={projects[activeIndex].name}
-                className="max-h-[65%] object-contain shadow-lg z-10"
+                loading="lazy"
+                className="max-h-[65%]  object-contain shadow-lg z-10"
               />
 
-              <div className="text-left w-full ">
+              <div className=" w-full text-center">
                 <h4 className="font-semibold text-lg">
                   {projects[activeIndex].description}
                 </h4>
