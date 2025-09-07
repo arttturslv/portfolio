@@ -2,9 +2,9 @@
 
 import About from "./components/about";
 import Cite from "./components/cite";
-import Footer from "./components/footer";
+import Footer from "../../components/footer";
 import Hero from "./components/hero";
-import Navbar from "./components/navbar";
+import Navbar from "../../components/navbar";
 import Projects from "./components/projects";
 
 function Home() {
