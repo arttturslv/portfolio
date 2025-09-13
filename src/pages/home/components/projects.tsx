@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TechShowcase from "./techShowcase";
+import { Link } from "react-router";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -167,9 +168,9 @@ export default function Projects() {
         </div>
 
         <div className="w-full flex justify-center ">
-          <a href="https://github.com/arttturslv" className="underline">
+          <Link to="projects" className="underline">
             see all projects
-          </a>
+          </Link>
         </div>
       </div>
     </section>

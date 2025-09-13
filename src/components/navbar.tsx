@@ -5,7 +5,7 @@ import { NavLink } from "react-router";
 function Navbar() {
   return (
     <header className="w-full  flex justify-center ">
-      <nav className="max-w-[1400px] items-center w-full flex h-10 px-4  ">
+      <nav className="max-w-[1400px]  items-center w-full flex h-10 px-4  mx-12  ">
         <div className="w-12 h-8 bg-black"></div>
 
         <div className="w-full gap-20 flex justify-center max-sm:hidden">

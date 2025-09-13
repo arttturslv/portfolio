@@ -9,19 +9,18 @@ import Projects from "./components/projects";
 
 function Home() {
   return (
-    <div className="w-full flex justify-center">
-      <div className="w-full max-w-[1400px] px-2 sm:px-12  ">
-        <Navbar></Navbar>
+    <div className="w-full flex flex-col justify-center">
+      <Navbar></Navbar>
 
+      <div className="w-full max-w-[1400px] px-2 sm:px-12  ">
         <Hero />
         <About />
 
         <Projects></Projects>
 
         <Cite></Cite>
-
-        <Footer></Footer>
       </div>
+      <Footer></Footer>
     </div>
   );
 }
