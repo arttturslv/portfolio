@@ -11,11 +11,11 @@ function Projects() {
         <Navbar></Navbar>
         <section className="w-full gap-3 text-center flex flex-col items-center my-36">
           <h1 className="text-8xl font-bold font-khan ">Feature projects</h1>
-          <p className="max-w-[60%] text-xl">
+          <p className="max-w-[60%] text-xl font-light">
             Made with love, inspiration and effort
           </p>
 
-          <div className="flex gap-2 flex-wrap justify-center">
+          {/* <div className="flex gap-2 flex-wrap justify-center">
             <span className="py-1 cursor-pointer px-2 bg-white hover:bg-gray-800 hover:text-white duration-200 transition-all shadow-sm rounded-md">
               React
             </span>
@@ -31,7 +31,7 @@ function Projects() {
             <span className="py-1 cursor-pointer px-2 bg-white hover:bg-gray-800 hover:text-white duration-200 transition-all shadow-sm rounded-md">
               HTML/CSS
             </span>
-          </div>
+          </div> */}
         </section>
 
         <section className="my-32 space-y-64 flex flex-col w-full items-center justify-center ">

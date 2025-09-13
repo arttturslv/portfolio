@@ -6,10 +6,13 @@ import Footer from "../../components/footer";
 import BentoItem from "./components/bentoItem";
 
 function Doodles() {
-  const data = Array.from({ length: 10 }, (_, _i) => ({
-    date: "20/08/2005",
-    srcImage: "/assets/doodles/test.png",
-  }));
+  const data = [
+    {
+      date: "2020-04-19",
+      srcImage: "/assets/doodles/connection.jpeg",
+      name: "Long distance connection",
+    },
+  ];
 
   function toChunks<T>(arr: T[], size: number): T[][] {
     const out: T[][] = [];
@@ -18,13 +21,13 @@ function Doodles() {
   }
   const chunks = toChunks(data, 4);
   return (
-    <div className="w-full flex justify-center bg-zinc-100">
-      <div className="w-full  px-4  ">
-        <Navbar></Navbar>
+    <div className="w-full flex flex-col items-center justify-center">
+      <Navbar></Navbar>
 
+      <div className="w-full max-w-[1400px] px-2 sm:px-12  ">
         <section className="w-full gap-3 text-center flex flex-col items-center my-36">
           <h1 className="text-8xl font-bold font-khan ">Gallery</h1>
-          <p className="max-w-[60%] text-xl">
+          <p className="max-w-[60%] text-xl font-light">
             Semi-confidential doodles. Not all mine, some of them are from my
             great friends, can you spot the them?
           </p>
@@ -35,53 +38,52 @@ function Doodles() {
             <div
               key={gi}
               className={
-                // grid 4x2 no desktop; alturas automáticas com auto-rows
                 "grid grid-flow-dense gap-4 sm:grid-cols-2  lg:grid-cols-4 auto-rows-[12rem] lg:auto-rows-[18rem]"
               }
             >
-              {/* L A R G E (ocupa 2 col x 2 rows) */}
               {group[0] && (
                 <div className="lg:col-span-2 lg:row-span-2">
                   <BentoItem
                     size="large"
                     srcImage={group[0].srcImage}
                     date={group[0].date}
+                    title={group[0].name}
                     fluid
                   />
                 </div>
               )}
 
-              {/* S M A L L 1 (topo, col 3) */}
               {group[1] && (
                 <div className="lg:col-start-3 lg:row-start-1">
                   <BentoItem
                     size="small"
                     srcImage={group[1].srcImage}
                     date={group[1].date}
+                    title={group[0].name}
                     fluid
                   />
                 </div>
               )}
 
-              {/* S M A L L 2 (topo, col 4) */}
               {group[2] && (
                 <div className="lg:col-start-4 lg:row-start-1">
                   <BentoItem
                     size="small"
                     srcImage={group[2].srcImage}
                     date={group[2].date}
+                    title={group[0].name}
                     fluid
                   />
                 </div>
               )}
 
-              {/* M E D I U M (embaixo, col 3-4) */}
               {group[3] && (
                 <div className="lg:col-start-3 lg:col-span-2 lg:row-start-2">
                   <BentoItem
                     size="medium"
                     srcImage={group[3].srcImage}
                     date={group[3].date}
+                    title={group[0].name}
                     fluid
                   />
                 </div>
@@ -89,9 +91,8 @@ function Doodles() {
             </div>
           ))}
         </section>
-
-        <Footer></Footer>
       </div>
+      <Footer />
     </div>
   );
 }

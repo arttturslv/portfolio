@@ -4,6 +4,7 @@ interface BentoItemProps {
   size: "large" | "medium" | "small";
   srcImage: string;
   date: string;
+  title: string;
   fluid?: boolean; // quando true, ignora tamanhos fixos e usa w/h 100%
 }
 
@@ -12,6 +13,7 @@ export default function BentoItem({
   srcImage,
   date,
   fluid = false,
+  title,
 }: BentoItemProps) {
   const sizeStyle = () => {
     if (fluid) return "w-full h-full"; // preenchimento total da célula da grid
@@ -29,16 +31,16 @@ export default function BentoItem({
 
   return (
     <div
-      className={` relative group rounded-xl bg-white hover:bg-zinc-900 transition-all duration-700 ease-in-out flex items-center justify-center overflow-hidden ${sizeStyle()}`}
+      className={` relative group rounded-xl bg-white hover:invert transition-all duration-700 ease-in-out flex items-center justify-center overflow-hidden ${sizeStyle()}`}
     >
-      <label className="absolute top-3 left-4 text-sm transition-all duration-400 group-hover:invert">
-        {date}
-      </label>
+      <span className="absolute z-50 top-3 flex justify-between w-[90%]  left-4 text-sm transition-all duration-400 ">
+        <label>{date}</label>
+        <label>{title}</label>
+      </span>
       <div className="w-full flex justify-center h-full">
         <img
-          className="h-[100%] object-contain transition-all duration-700 group-hover:invert"
+          className="  object-contain transition-all duration-700 "
           src={srcImage}
-          alt=""
         />
       </div>
     </div>

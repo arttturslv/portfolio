@@ -25,14 +25,9 @@ const projects: Project[] = [
     image: "/assets/images/projects/postaai/main.png",
   },
   {
-    name: "ENCURTAAI",
+    name: "MINIMIZAAI",
     description: "Short that link",
-    image: "/assets/images/projects/encurtaai/main.png",
-  },
-  {
-    name: "SABIO",
-    description: "Need some advice? See your online guru",
-    image: "/assets/images/projects/guru/main.png",
+    image: "/assets/images/projects/minimizaai/main.png",
   },
 ];
 
@@ -117,7 +112,7 @@ export default function Projects() {
                     buttonsRef.current[i] = el;
                   }}
                   type="button"
-                  className="text-gray-400 text-left focus:outline-none"
+                  className="text-gray-400 text-5xl text-left focus:outline-none"
                   onClick={() => {
                     const containerTop =
                       containerRef.current!.getBoundingClientRect().top +
@@ -152,7 +147,7 @@ export default function Projects() {
                 src={projects[activeIndex].image}
                 alt={projects[activeIndex].name}
                 loading="lazy"
-                className="max-h-[65%]  object-contain shadow-lg z-10"
+                className="max-h-[75%] object-contain  z-10"
               />
 
               <div className=" w-full text-center">
