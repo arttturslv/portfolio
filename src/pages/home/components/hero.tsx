@@ -3,7 +3,7 @@
 export default function Hero() {
   return (
     <main className="h-screen  flex justify-center space-y-2 flex-col items-center">
-      <div className="flex flex-col gap-2 items-center justify-center">
+      <div className="flex flex-col gap-2 items-center justify-center fade-element ">
         <p className=" text-3xl max-sm:text-2xl">Olá, meu nome é</p>
 
         <span className="flex group ">

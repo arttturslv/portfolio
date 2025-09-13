@@ -47,8 +47,8 @@ export default function ProjectItem({
   }
 
   return (
-    <div className="flex flex-col gap-4 max-w-7xl">
-      <div className="flex max-sm:flex-col gap-3 ">
+    <div className="flex flex-col gap-4 max-w-7xl ">
+      <div className="flex max-sm:flex-col gap-3 fade-element  ">
         <div className="sm:w-1/3 flex flex-col gap-3">
           <div
             style={{ backgroundColor: `rgb(${color.join(",")})` }}
@@ -85,7 +85,7 @@ export default function ProjectItem({
         </div>
       </div>
       <div>
-        <p className="text-2xl">{description}</p>
+        <p className="text-2xl fade-element ">{description}</p>
       </div>
     </div>
   );

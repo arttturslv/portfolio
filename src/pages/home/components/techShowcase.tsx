@@ -8,7 +8,7 @@ import figmaIcon from "/assets/images/techstack/figma.svg";
 
 export default function TechShowcase() {
   return (
-    <div className="space-y-6 flex flex-col items-center">
+    <div className=" fade-element space-y-6 flex flex-col items-center">
       <h3>here some of my best skills</h3>
       <div className="flex sm:gap-18 gap-8 flex-wrap items-center justify-center">
         <span className="flex flex-col gap-1 items-center">

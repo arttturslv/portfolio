@@ -31,7 +31,7 @@ export default function BentoItem({
 
   return (
     <div
-      className={` relative group rounded-xl bg-white hover:invert transition-all duration-700 ease-in-out flex items-center justify-center overflow-hidden ${sizeStyle()}`}
+      className={` fade-element  relative group rounded-xl border-gray-100 border-2 bg-white hover:invert transition-all duration-700 ease-in-out flex items-center justify-center overflow-hidden ${sizeStyle()}`}
     >
       <span className="absolute z-50 top-3 flex justify-between w-[90%]  left-4 text-sm transition-all duration-400 ">
         <label>{date}</label>

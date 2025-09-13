@@ -75,7 +75,7 @@ export default function About() {
           ref={containerRef}
           onMouseEnter={() => tl.current?.play()}
           onMouseLeave={() => tl.current?.reverse()}
-          className="w-full  group flex items-center justify-center "
+          className="w-full  group flex items-center justify-center  fade-element "
         >
           <div className="relative group w-72">
             <img
@@ -108,7 +108,7 @@ export default function About() {
           </div>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-3 fade-element ">
           <p className="lg:text-4xl md:text-3xl text-2xl font-light">
             I’m a developer based in Belo Horizonte — the capital of cheese 🧀.
             Passionate about crafting high-quality digital experiences, putting
@@ -120,7 +120,7 @@ export default function About() {
 
           <a
             href="https://github.com/arttturslv"
-            className="underline transition-all duration-200 hover:text-orange-800"
+            className="underline fade-element  transition-all duration-200 hover:text-orange-800"
           >
             talk to me
           </a>

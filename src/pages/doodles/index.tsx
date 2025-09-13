@@ -25,7 +25,7 @@ function Doodles() {
       <Navbar></Navbar>
 
       <div className="w-full max-w-[1400px] px-2 sm:px-12  ">
-        <section className="w-full gap-3 text-center flex flex-col items-center my-36">
+        <section className="fade-element  w-full gap-3 text-center flex flex-col items-center my-36">
           <h1 className="text-8xl font-bold font-khan ">Gallery</h1>
           <p className="max-w-[60%] text-xl font-light">
             Semi-confidential doodles. Not all mine, some of them are from my

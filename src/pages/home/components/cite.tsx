@@ -32,12 +32,12 @@ function Cite() {
     }
   };
   return (
-    <section className="my-48 flex justify-center">
+    <section className="my-48 flex justify-center  ">
       <cite
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         ref={textRef}
-        className="sm:text-3xl text-2xl text-center "
+        className="sm:text-3xl text-2xl text-center fade-element  "
       >
         Legatum est sensus vitae
       </cite>

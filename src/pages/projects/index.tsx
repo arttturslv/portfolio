@@ -9,7 +9,7 @@ function Projects() {
     <div className="w-full flex justify-center bg-zinc-100">
       <div className="w-full  ">
         <Navbar></Navbar>
-        <section className="w-full gap-3 text-center flex flex-col items-center my-36">
+        <section className="fade-element  w-full gap-3 text-center flex flex-col items-center my-36">
           <h1 className="text-8xl font-bold font-khan ">Feature projects</h1>
           <p className="max-w-[60%] text-xl font-light">
             Made with love, inspiration and effort

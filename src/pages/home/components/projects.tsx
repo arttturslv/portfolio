@@ -66,7 +66,6 @@ export default function Projects() {
     return () => {
       st.kill();
       window.removeEventListener("resize", onResize);
-      ScrollTrigger.refresh();
     };
   }, []);
 
@@ -138,19 +137,17 @@ export default function Projects() {
           {/* conteúdo (à direita) */}
           <div className="absolute max-sm:w-full  right-0 top-0 bottom-0 w-2/3 flex items-center justify-center">
             <div
+              key={activeIndex}
               ref={projectRef}
-              className="relative  w-full h-full flex flex-col gap-2 items-center  justify-center"
+              className="relative w-full h-full flex flex-col gap-2 items-center justify-center"
             >
-              {/* fade top */}
-
               <img
                 src={projects[activeIndex].image}
                 alt={projects[activeIndex].name}
                 loading="lazy"
-                className="max-h-[75%] object-contain  z-10"
+                className="max-h-[75%] object-contain z-10"
               />
-
-              <div className=" w-full text-center">
+              <div className="w-full text-center">
                 <h4 className="font-semibold text-lg">
                   {projects[activeIndex].description}
                 </h4>
