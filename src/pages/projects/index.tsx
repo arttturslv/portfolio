@@ -1,16 +1,55 @@
 /** @format */
 
+import { useEffect, useRef } from "react";
 import Footer from "../../components/footer";
 import Navbar from "../../components/navbar";
 import ProjectItem from "./components/projectItem";
+import { useLocation } from "react-router";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+gsap.registerPlugin(ScrollTrigger);
 function Projects() {
+  const location = useLocation();
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    const ctx = gsap.context(() => {
+      // anima apenas elementos internos, não o container inteiro
+      gsap.from(".fade-element", {
+        autoAlpha: 0,
+        y: 50,
+        duration: 1,
+        stagger: 0.2,
+        ease: "power3.out",
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const scrollTo = params.get("scrollTo"); // "congrats", "postaai", etc.
+    if (!scrollTo) return;
+
+    const el = document.getElementById(scrollTo);
+    if (el) {
+      // esperar o próximo tick para garantir que ScrollTrigger montou
+      setTimeout(() => {
+        el.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 100);
+    }
+  }, [location.search]);
+
   return (
-    <div className="w-full flex justify-center bg-zinc-100">
+    <div ref={containerRef} className="w-full flex justify-center bg-zinc-100">
       <div className="w-full  ">
         <Navbar></Navbar>
         <section className="fade-element  w-full gap-3 text-center flex flex-col items-center my-36">
-          <h1 className="text-8xl font-bold font-khan ">Feature projects</h1>
+          <h1 className="text-8xl font-bold font-khan ">Projects</h1>
           <p className="max-w-[60%] text-xl font-light">
             Made with love, inspiration and effort
           </p>
@@ -41,11 +80,10 @@ function Projects() {
             terImageSrc={"assets/images/projects/congrats/phone.png"}
             title={"Congrats"}
             stack={["React", "Tailwind", "TypeScript", "Node.js"]}
-            description={
-              "I’m a frontend developer based in Belo Horizonte — the capital of cheese 🧀. Passionate about crafting high-quality, delightful, and visually striking digital experiences. Amazed by little things, animals, art, technology and the capacities of our species."
-            }
-            liveSrc={"http://localhost:5173/projects"}
-            githubSrc={null}
+            description={`O Congrats é uma aplicação que permite criar mensagens personalizadas para celebrar ocasiões únicas como Natal, aniversários, amizades e muito mais.
+A proposta é transformar cada celebração em uma experiência memorável, tanto para quem cria quanto para quem recebe.`}
+            liveSrc={"c.arttturslv.com"}
+            githubSrc={"github.com/arttturslv/Congrats"}
           ></ProjectItem>
           <ProjectItem
             mainImageSrc={"assets/images/projects/postaai/main.png"}
@@ -53,17 +91,15 @@ function Projects() {
             terImageSrc={"assets/images/projects/postaai/phone.png"}
             title={"Postaai"}
             stack={["React", "Tailwind", "TypeScript", "Node.js"]}
-            description={
-              "I’m a frontend developer based in Belo Horizonte — the capital of cheese 🧀. Passionate about crafting high-quality, delightful, and visually striking digital experiences. Amazed by little things, animals, art, technology and the capacities of our species."
-            }
-            liveSrc={"http://localhost:5173/projects"}
-            githubSrc={null}
+            description={`O PostaAi é uma aplicação que funciona como um mural virtual colaborativo, onde qualquer pessoa pode deixar anotações, recados ou até desenhos. A proposta é criar um espaço interativo e aberto, permitindo que cada usuário deixe sua marca e contribua para uma experiência coletiva única.`}
+            liveSrc={"postaai.artttur.com/"}
+            githubSrc={"github.com/arttturslv/Posta-ai"}
           ></ProjectItem>
         </section>
 
         <section className="my-48 flex justify-center">
           <h4 className="sm:text-xl text-2xl text-center ">
-            Fim por aqui, que tal entrar no meu github a procura de novidades?
+            Por enquanto é só isso, mas vem mais por aí!
           </h4>
         </section>
 
