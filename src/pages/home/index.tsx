@@ -6,12 +6,15 @@ import Footer from "../../components/footer";
 import Hero from "./components/hero";
 import Navbar from "../../components/navbar";
 import Projects from "./components/projects";
-import { useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ThemeContext } from "../../routes/routes";
 
 gsap.registerPlugin(ScrollTrigger);
 function Home() {
+  const { isDark } = useContext(ThemeContext);
+
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -34,7 +37,9 @@ function Home() {
   return (
     <div
       ref={containerRef}
-      className="w-full flex flex-col items-center justify-center"
+      className={`${
+        isDark ? "dark" : "light"
+      } w-full overflow-x-hidden flex flex-col bg-primary-light dark:bg-primary-dark text-primary-dark dark:text-primary-light items-center justify-center`}
     >
       <Navbar></Navbar>
 

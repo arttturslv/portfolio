@@ -83,7 +83,7 @@ export default function About() {
               className="w-full main group-hover:shadow-xl duration-400 transition-all"
               alt=""
             />
-            <div className="absolute top-0 bg-gradient-to-t w-full h-42 from-transparent to-white/30"></div>
+            <div className="absolute top-0 bg-gradient-to-t w-full h-42 from-transparent to-primary-light/30"></div>
 
             <img
               src="/assets/images/interests/moto.png"
@@ -119,8 +119,8 @@ export default function About() {
           </p>
 
           <a
-            href="https://github.com/arttturslv"
-            className="underline fade-element  transition-all duration-200 hover:text-orange-800"
+            href="mailto:arttturslv@gmail.com"
+            className="underline transition-all duration-200 hover:text-orange-800"
           >
             talk to me
           </a>

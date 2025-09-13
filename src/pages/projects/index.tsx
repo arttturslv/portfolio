@@ -1,15 +1,18 @@
 /** @format */
 
-import { useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import Footer from "../../components/footer";
 import Navbar from "../../components/navbar";
 import ProjectItem from "./components/projectItem";
 import { useLocation } from "react-router";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ThemeContext } from "../../routes/routes";
 
 gsap.registerPlugin(ScrollTrigger);
 function Projects() {
+  const { isDark } = useContext(ThemeContext);
+
   const location = useLocation();
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -45,7 +48,12 @@ function Projects() {
   }, [location.search]);
 
   return (
-    <div ref={containerRef} className="w-full flex justify-center bg-zinc-100">
+    <div
+      ref={containerRef}
+      className={`${
+        isDark ? "dark" : "light"
+      } w-full flex justify-center bg-primary-light dark:bg-primary-dark text-primary-dark dark:text-primary-light`}
+    >
       <div className="w-full  ">
         <Navbar></Navbar>
         <section className="fade-element  w-full gap-3 text-center flex flex-col items-center my-36">
@@ -94,6 +102,17 @@ A proposta é transformar cada celebração em uma experiência memorável, tant
             description={`O PostaAi é uma aplicação que funciona como um mural virtual colaborativo, onde qualquer pessoa pode deixar anotações, recados ou até desenhos. A proposta é criar um espaço interativo e aberto, permitindo que cada usuário deixe sua marca e contribua para uma experiência coletiva única.`}
             liveSrc={"postaai.artttur.com/"}
             githubSrc={"github.com/arttturslv/Posta-ai"}
+          ></ProjectItem>
+
+          <ProjectItem
+            mainImageSrc={"assets/images/projects/minimizaai/main.png"}
+            secImageSrc={"assets/images/projects/minimizaai/pc.png"}
+            terImageSrc={"assets/images/projects/minimizaai/phone.png"}
+            title={"Minimizaai"}
+            stack={["React", "Tailwind", "TypeScript", "Node.js"]}
+            description={`O MinimizaAi é uma aplicação web de encurtamento de URLs que facilita o compartilhamento de links de forma rápida. A proposta é oferecer uma solução simples para gerar links curtos, armazená-los e gerenciá-los de maneira prática localmente.`}
+            liveSrc={"s.artttur.com/"}
+            githubSrc={"github.com/arttturslv/MinimizaAi"}
           ></ProjectItem>
         </section>
 

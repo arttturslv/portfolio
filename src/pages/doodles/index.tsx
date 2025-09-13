@@ -4,9 +4,10 @@ import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 
 import BentoItem from "./components/bentoItem";
-import { useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ThemeContext } from "../../routes/routes";
 
 gsap.registerPlugin(ScrollTrigger);
 function Doodles() {
@@ -43,10 +44,15 @@ function Doodles() {
     return out;
   }
   const chunks = toChunks(data, 4);
+
+  const { isDark } = useContext(ThemeContext);
+
   return (
     <div
       ref={containerRef}
-      className="w-full flex flex-col items-center justify-center"
+      className={`${
+        isDark ? "dark" : "light"
+      } bg-primary-light dark:bg-primary-dark text-primary-dark dark:text-primary-light w-full flex flex-col items-center justify-center`}
     >
       <Navbar></Navbar>
 

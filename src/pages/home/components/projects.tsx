@@ -1,9 +1,10 @@
 /** @format */
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TechShowcase from "./techShowcase";
 import { Link } from "react-router";
+import { ThemeContext } from "../../../routes/routes";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -32,6 +33,8 @@ const projects: Project[] = [
 ];
 
 export default function Projects() {
+  const { isDark } = useContext(ThemeContext);
+
   const [activeIndex, setActiveIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const projectRef = useRef<HTMLDivElement | null>(null);
@@ -46,7 +49,7 @@ export default function Projects() {
 
     const st = ScrollTrigger.create({
       trigger: container,
-      start: "center center", // "assim que os projects estiverem centralizados, inicia"
+      start: "top top", // "assim que os projects estiverem centralizados, inicia"
       end: () => `+=${window.innerHeight * transitions * 0.5}`, // cada passo ocupa 1 viewport
       pin: true,
       scrub: 0.6,
@@ -87,7 +90,7 @@ export default function Projects() {
       if (!btn) return;
       gsap.to(btn, {
         scale: i === activeIndex ? 1.05 : 1,
-        color: i === activeIndex ? "#000000" : "#9ca3af",
+        color: i === activeIndex ? "#0c090d" : "#f1f2f6",
         duration: 0.35,
         ease: "power3.out",
       });
@@ -113,7 +116,9 @@ export default function Projects() {
                     buttonsRef.current[i] = el;
                   }}
                   type="button"
-                  className="text-gray-400 text-5xl text-left focus:outline-none"
+                  className={`${
+                    isDark && "invert-75"
+                  } text-gray-400 text-5xl invert-25 text-left focus:outline-none`}
                   onClick={() => {
                     const containerTop =
                       containerRef.current!.getBoundingClientRect().top +

@@ -1,12 +1,19 @@
 /** @format */
 
+import { useContext } from "react";
 import { NavLink } from "react-router";
+import { ThemeContext } from "../routes/routes";
 
 function Navbar() {
+  const { isDark, changeTheme } = useContext(ThemeContext);
+
   return (
     <header className="w-full  flex justify-center ">
       <nav className="max-w-[1400px]  items-center w-full flex h-10 px-4  mx-12  ">
-        <img src="assets/logo.png" className="w-12 "></img>
+        <img
+          src="assets/logo.png"
+          className={`w-12 ${isDark && "invert"}`}
+        ></img>
 
         <div className="w-full gap-20 flex justify-center max-sm:hidden">
           <NavLink
@@ -42,8 +49,16 @@ function Navbar() {
             doodles
           </NavLink>
         </div>
-        <div className="max-sm:w-full flex items-center justify-end">
-          <p>lightmode</p>
+        <div
+          onClick={changeTheme}
+          className="max-sm:w-full invert flex items-center justify-end cursor-pointer group"
+        >
+          <img
+            className={`${
+              isDark && "invert-100"
+            } group-hover:scale-105 transition-all duration-200`}
+            src={isDark ? "assets/icon/sun.svg" : "assets/icon/moon.svg"}
+          />
         </div>
       </nav>
     </header>

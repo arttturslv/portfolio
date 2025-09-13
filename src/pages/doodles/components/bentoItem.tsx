@@ -1,5 +1,8 @@
 /** @format */
 
+import { useContext } from "react";
+import { ThemeContext } from "../../../routes/routes";
+
 interface BentoItemProps {
   size: "large" | "medium" | "small";
   srcImage: string;
@@ -15,6 +18,8 @@ export default function BentoItem({
   fluid = false,
   title,
 }: BentoItemProps) {
+  const { isDark } = useContext(ThemeContext);
+
   const sizeStyle = () => {
     if (fluid) return "w-full h-full"; // preenchimento total da célula da grid
     switch (size) {
@@ -33,7 +38,11 @@ export default function BentoItem({
     <div
       className={` fade-element  relative group rounded-xl border-gray-100 border-2 bg-white hover:invert transition-all duration-700 ease-in-out flex items-center justify-center overflow-hidden ${sizeStyle()}`}
     >
-      <span className="absolute z-50 top-3 flex justify-between w-[90%]  left-4 text-sm transition-all duration-400 ">
+      <span
+        className={` ${
+          isDark && "invert"
+        } absolute  z-50 top-3 flex justify-between w-[90%]  left-4 text-sm transition-all duration-400 `}
+      >
         <label>{date}</label>
         <label>{title}</label>
       </span>

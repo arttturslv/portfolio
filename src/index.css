@@ -21,6 +21,8 @@
 @theme {
   --font-khan: "Khand", sans-serif;
   --font-sans: "Supreme", sans-serif;
-  --color-light: #0c090d; /* sem aspas */
-  --color-dark: #f1f2f6;
+  --color-primary-dark: #0c090d; /* sem aspas */
+  --color-primary-light: #f1f2f6;
 }
+
+@custom-variant dark (&:where(.dark, .dark *));

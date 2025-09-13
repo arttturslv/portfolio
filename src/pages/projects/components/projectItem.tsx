@@ -46,7 +46,7 @@ export default function ProjectItem({
         <div className="sm:w-1/3 flex flex-col gap-3">
           <div
             style={{ backgroundColor: `rgb(${color.join(",")})` }}
-            className={` w-full overflow-hidden relative hover:rounded-xl group transition-all duration-300`}
+            className={` w-full overflow-hidden relative group transition-all duration-300`}
           >
             <img
               crossOrigin="anonymous"
@@ -61,7 +61,7 @@ export default function ProjectItem({
           </div>
           <div
             style={{ backgroundColor: `rgb(${color.join(",")})` }}
-            className=" w-full overflow-hidden relative hover:rounded-xl group transition-all duration-300"
+            className=" w-full overflow-hidden relative  group transition-all duration-300"
           >
             <img
               className="h-full w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
@@ -71,15 +71,15 @@ export default function ProjectItem({
         </div>
         <div
           style={{ backgroundColor: `rgb(${color.join(",")})` }}
-          className="sm:w-2/3 flex  items-center justify-center w-full overflow-hidden group relative md:hover:rounded-xl transition-all duration-300"
+          className="sm:w-2/3 flex  items-center justify-center w-full overflow-hidden group relative transition-all duration-300"
         >
           <img
             className="h-full w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
             src={terImageSrc}
           />
           <div className="w-full duration-500 flex-col items-start transition-all ease-out absolute bottom-0 h-22 px-8 py-4 flex  from-black/50 to-black/0 bg-linear-to-t">
-            <h3 className="text-3xl font-extrabold invert">{title}</h3>
-            <p className="invert">{stack.join(", ")}</p>
+            <h3 className="text-3xl font-extrabold text-white">{title}</h3>
+            <p className="text-white">{stack.join(", ")}</p>
           </div>
         </div>
       </div>
