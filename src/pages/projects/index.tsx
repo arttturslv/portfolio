@@ -81,37 +81,81 @@ function Projects() {
           </div> */}
         </section>
 
-        <section className="my-32 space-y-64 flex flex-col w-full items-center justify-center ">
+        <section className="my-32  space-y-32 sm:space-y-64 flex flex-col w-full items-center justify-center ">
           <ProjectItem
-            mainImageSrc={"assets/images/projects/congrats/main.png"}
-            secImageSrc={"assets/images/projects/congrats/pc.png"}
-            terImageSrc={"assets/images/projects/congrats/phone.png"}
+            mainImage={{
+              src: "assets/images/projects/congrats/congrats-full.png",
+              alt: "Congrats main image",
+              full: false,
+            }}
+            terImage={{
+              src: "assets/images/projects/congrats/congrats-sec.png",
+              alt: "Congrats sec image",
+              full: false,
+            }}
+            secImage={{
+              src: "assets/images/projects/congrats/congrats-terc.png",
+              alt: "Congrats sec image",
+              full: false,
+            }}
             title={"Congrats"}
-            stack={["React", "Tailwind", "TypeScript", "Node.js"]}
+            stack={[
+              "JavaScript",
+              "React",
+              "Tailwind",
+              "Node.js",
+              "Express",
+              "MongoDB",
+            ]}
             description={`O Congrats é uma aplicação que permite criar mensagens personalizadas para celebrar ocasiões únicas como Natal, aniversários, amizades e muito mais.
 A proposta é transformar cada celebração em uma experiência memorável, tanto para quem cria quanto para quem recebe.`}
             liveSrc={"c.arttturslv.com"}
             githubSrc={"github.com/arttturslv/Congrats"}
           ></ProjectItem>
+
           <ProjectItem
-            mainImageSrc={"assets/images/projects/postaai/main.png"}
-            secImageSrc={"assets/images/projects/postaai/pc.png"}
-            terImageSrc={"assets/images/projects/postaai/phone.png"}
+            mainImage={{
+              src: "assets/images/projects/postaai/postaai-full.png",
+              alt: "Posta ai main image",
+              full: false,
+            }}
+            terImage={{
+              src: "assets/images/projects/postaai/postaai-terc.png",
+              alt: "Posta ai terc image",
+              full: false,
+            }}
+            secImage={{
+              src: "assets/images/projects/postaai/postaai-sec.png",
+              alt: "Posta ai sec image",
+              full: false,
+            }}
             title={"Postaai"}
-            stack={["React", "Tailwind", "TypeScript", "Node.js"]}
+            stack={["React", "Tailwind", "Node.js", "MongoDB"]}
             description={`O PostaAi é uma aplicação que funciona como um mural virtual colaborativo, onde qualquer pessoa pode deixar anotações, recados ou até desenhos. A proposta é criar um espaço interativo e aberto, permitindo que cada usuário deixe sua marca e contribua para uma experiência coletiva única.`}
-            liveSrc={"postaai.artttur.com/"}
+            liveSrc={"postaai.artttur.com"}
             githubSrc={"github.com/arttturslv/Posta-ai"}
           ></ProjectItem>
 
           <ProjectItem
-            mainImageSrc={"assets/images/projects/minimizaai/main.png"}
-            secImageSrc={"assets/images/projects/minimizaai/pc.png"}
-            terImageSrc={"assets/images/projects/minimizaai/phone.png"}
-            title={"Minimizaai"}
-            stack={["React", "Tailwind", "TypeScript", "Node.js"]}
+            mainImage={{
+              src: "assets/images/projects/minimizaai/minimizaai-full.png",
+              alt: "Minimiza ai main image",
+              full: false,
+            }}
+            terImage={{
+              src: "assets/images/projects/minimizaai/minimizaai-terc.png",
+              alt: "Minimiza ai terc image",
+              full: false,
+            }}
+            secImage={{
+              src: "assets/images/projects/minimizaai/minimizaai-sec.png",
+              alt: "Minimiza ai sec image",
+              full: false,
+            }}
+            title={"Postaai"}
+            stack={["React", "Tailwind", "Node.js", "Express", "MongoDB"]}
             description={`O MinimizaAi é uma aplicação web de encurtamento de URLs que facilita o compartilhamento de links de forma rápida. A proposta é oferecer uma solução simples para gerar links curtos, armazená-los e gerenciá-los de maneira prática localmente.`}
-            liveSrc={"s.artttur.com/"}
+            liveSrc={"s.artttur.com"}
             githubSrc={"github.com/arttturslv/MinimizaAi"}
           ></ProjectItem>
         </section>

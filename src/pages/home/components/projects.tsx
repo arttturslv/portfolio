@@ -17,17 +17,17 @@ type Project = {
 const projects: Project[] = [
   {
     name: "CONGRATS",
-    description: "New way of congratulating people",
+    description: "Manda parabéns, manda Congrats!",
     image: "/assets/images/projects/congrats/main.png",
   },
   {
     name: "POSTAAI",
-    description: "Our online post it mural",
+    description: "Mural de post-its",
     image: "/assets/images/projects/postaai/main.png",
   },
   {
     name: "MINIMIZAAI",
-    description: "Short that link",
+    description: "Minimiza aí",
     image: "/assets/images/projects/minimizaai/main.png",
   },
 ];
@@ -160,9 +160,6 @@ export default function Projects() {
                 <h4 className="font-semibold text-lg">
                   {projects[activeIndex].description}
                 </h4>
-                <p className="text-sm">
-                  JS | React | Tailwind | Node.js | MongoDB
-                </p>
               </div>
             </div>
           </div>

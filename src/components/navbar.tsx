@@ -10,10 +10,12 @@ function Navbar() {
   return (
     <header className="w-full  flex justify-center ">
       <nav className="max-w-[1400px]  items-center w-full flex h-10 px-4  mx-12  ">
-        <img
-          src="assets/logo.png"
-          className={`w-12 ${isDark && "invert"}`}
-        ></img>
+        <NavLink to="/">
+          <img
+            src="assets/logo.png"
+            className={`w-12 ${isDark && "invert"}`}
+          ></img>
+        </NavLink>
 
         <div className="w-full gap-20 flex justify-center max-sm:hidden">
           <NavLink

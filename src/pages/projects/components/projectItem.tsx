@@ -2,10 +2,15 @@
 
 import { useRef, useState } from "react";
 
+interface image {
+  src: string;
+  alt: string;
+  full?: boolean;
+}
 interface ProjectItemProps {
-  mainImageSrc: string;
-  secImageSrc: string;
-  terImageSrc: string;
+  mainImage: image;
+  secImage: image;
+  terImage: image;
   title: string;
   stack: string[];
   description: string;
@@ -13,13 +18,13 @@ interface ProjectItemProps {
   githubSrc: string | null;
 }
 export default function ProjectItem({
-  mainImageSrc,
+  mainImage,
   description,
   githubSrc,
   liveSrc,
-  secImageSrc,
+  secImage,
   stack,
-  terImageSrc,
+  terImage,
   title,
 }: ProjectItemProps) {
   const imgRef = useRef<HTMLImageElement | null>(null);
@@ -42,11 +47,11 @@ export default function ProjectItem({
       id={title.toLowerCase().replace(/\s+/g, "-")}
       className="flex flex-col gap-4 max-w-7xl "
     >
-      <div className="flex max-sm:flex-col gap-3 fade-element  ">
-        <div className="sm:w-1/3 flex flex-col gap-3">
+      <div className="flex max-sm:flex-col sm:gap-2 gap-0.5 fade-element  ">
+        <div className="sm:w-1/3 flex flex-col sm:gap-2 gap-0.5 ">
           <div
             style={{ backgroundColor: `rgb(${color.join(",")})` }}
-            className={` w-full overflow-hidden relative group transition-all duration-300`}
+            className={` w-full max-h-56 flex items-center justify-center overflow-hidden relative group transition-all duration-300`}
           >
             <img
               crossOrigin="anonymous"
@@ -56,41 +61,43 @@ export default function ProjectItem({
                 setColor([r, g, b]);
               }}
               className="h-full w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
-              src={mainImageSrc}
+              src={terImage.src}
             />
           </div>
           <div
             style={{ backgroundColor: `rgb(${color.join(",")})` }}
-            className=" w-full overflow-hidden relative  group transition-all duration-300"
+            className=" w-full  flex items-center justify-center max-sm:items-start max-h-56 overflow-hidden relative  group transition-all duration-300"
           >
             <img
-              className="h-full w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
-              src={secImageSrc}
+              className="h-full  object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+              src={secImage.src}
             />
           </div>
         </div>
         <div
           style={{ backgroundColor: `rgb(${color.join(",")})` }}
-          className="sm:w-2/3 flex  items-center justify-center w-full overflow-hidden group relative transition-all duration-300"
+          className="sm:w-2/3 flex items-center justify-center w-full overflow-hidden group relative transition-all duration-300"
         >
-          <img
-            className="h-full w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
-            src={terImageSrc}
-          />
-          <div className="w-full duration-500 flex-col items-start transition-all ease-out absolute bottom-0 h-22 px-8 py-4 flex  from-black/50 to-black/0 bg-linear-to-t">
+          <div className="w-full flex items-start justify-center  p-6 h-108 overflow-hidden ">
+            <img
+              className="h-full shadow-xl w-full object-top object-cover rounded-sm transition-transform duration-500 ease-in-out"
+              src={mainImage.src}
+            />
+          </div>
+          <div className="w-full group-hover:-bottom-22 duration-500 flex-col items-start transition-all ease-out absolute bottom-0 h-22 px-8 py-4 flex  from-black/70 to-black/0 bg-linear-to-t">
             <h3 className="text-3xl font-extrabold text-white">{title}</h3>
             <p className="text-white">{stack.join(", ")}</p>
           </div>
         </div>
       </div>
       <div className="xl:p-0 px-4 fade-element">
-        <p className="text-2xl  ">{description}</p>
+        <p className="sm:text-2xl text-xl font-light ">{description}</p>
         <div className="flex flex-col">
           {liveSrc && (
-            <span className="text-lg">
+            <span className="sm:text-lg text-md">
               see here:{" "}
               <a
-                className="underline transition-all duration-200 hover:text-orange-800"
+                className="underline font-medium transition-all duration-200 hover:text-orange-800"
                 href={liveSrc}
               >
                 {liveSrc}
@@ -98,10 +105,10 @@ export default function ProjectItem({
             </span>
           )}
           {githubSrc && (
-            <span className="text-lg">
+            <span className="sm:text-lg text-md">
               code here:{" "}
               <a
-                className="underline transition-all duration-200 hover:text-orange-800"
+                className="underline font-medium transition-all duration-200 hover:text-orange-800"
                 href={githubSrc}
               >
                 {githubSrc}

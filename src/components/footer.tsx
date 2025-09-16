@@ -6,14 +6,14 @@ export default function Footer() {
       <div className="max-w-[1400px] w-full px-12 space-y-4 py-2 max-sm:space-y-6    ">
         <section className="flex justify-between sm:flex-row flex-col max-sm:space-y-4">
           <div className=" w-full sm:w-60">
-            <p className="max-sm:text-center">
+            <p className="max-sm:text-center ">
               developer | designer frontend | tech passionated | curious |
               trying things
             </p>
           </div>
           <div>
             <span className="max-sm:hidden">Socials</span>
-            <div className="w-full  gap-2 flex justify-center">
+            <div className="w-full max-sm:hidden gap-2 flex justify-center">
               <a
                 href="https://github.com/arttturslv"
                 className="hover:underline transition-all duration-200"
@@ -38,7 +38,9 @@ export default function Footer() {
           </div>
         </section>
         <section className="flex justify-center">
-          <span>all rights belong to creator @ 2025</span>{" "}
+          <span className="max-sm:text-sm">
+            all rights belong to creator @ 2025
+          </span>{" "}
         </section>
       </div>
     </footer>
