@@ -1,6 +1,7 @@
 /** @format */
 import React, { useLayoutEffect } from "react";
 import { gsap } from "gsap";
+import { NavLink } from "react-router";
 
 export default function About() {
   const containerRef = React.useRef<HTMLDivElement>(null);
@@ -110,12 +111,18 @@ export default function About() {
 
         <div className="space-y-3 fade-element ">
           <p className="lg:text-4xl md:text-3xl text-2xl font-light">
-            I’m a developer based in Belo Horizonte — the capital of cheese 🧀.
-            Passionate about crafting high-quality digital experiences, putting
-            ideas into code.
+            I’m a developer based in Belo Horizonte, working at{" "}
+            <NavLink
+              to="/"
+              className=" hover:underline transition-all duration-200 hover:text-orange-800"
+            >
+              @FACSS
+            </NavLink>{" "}
+            , dedicated to crafting digital experiences, putting ideas into
+            code. I believe in using my skills to make the world a better place.
             <br></br>
-            Amazed by little things, nature, food, art, technology & the
-            capacities of our species.
+            Beyond the screen, I'm fascinated by things like nature, food, art,
+            technology & the potential of our species.
           </p>
 
           <a

@@ -5,6 +5,9 @@ import javascriptIcon from "/assets/images/techstack/js.svg";
 import typescriptIcon from "/assets/images/techstack/ts.svg";
 import reactIcon from "/assets/images/techstack/react.svg";
 import figmaIcon from "/assets/images/techstack/figma.svg";
+import expressIcon from "/assets/images/techstack/express.svg";
+import nodeIcon from "/assets/images/techstack/node.svg";
+
 import { ThemeContext } from "../../../routes/routes";
 import { useContext } from "react";
 
@@ -29,6 +32,14 @@ export default function TechShowcase() {
 
         <span className="flex flex-col gap-1 items-center">
           <img loading="lazy" src={reactIcon} className="w-14" alt="" />
+        </span>
+
+        <span className="flex flex-col gap-1 items-center">
+          <img loading="lazy" src={nodeIcon} className="w-14" alt="" />
+        </span>
+
+        <span className="flex flex-col gap-1 items-center">
+          <img loading="lazy" src={expressIcon} className="w-14" alt="" />
         </span>
 
         <span className="flex flex-col gap-1 items-center">

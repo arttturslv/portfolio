@@ -37,7 +37,7 @@ function Cite() {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         ref={textRef}
-        className="sm:text-3xl text-2xl text-center fade-element  "
+        className="sm:text-3xl text-2xl text-center transition-all duration-200 hover:text-orange-800 "
       >
         Legatum est sensus vitae
       </cite>

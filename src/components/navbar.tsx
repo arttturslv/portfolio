@@ -48,7 +48,7 @@ function Navbar() {
                 : " gap-12 flex justify-center"
             }
           >
-            doodles
+            gallery
           </NavLink>
         </div>
         <div

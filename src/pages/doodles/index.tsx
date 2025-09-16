@@ -36,6 +36,11 @@ function Doodles() {
       srcImage: "/assets/doodles/connection.jpeg",
       name: "Long distance connection",
     },
+    {
+      date: "2023-04-01",
+      srcImage: "/assets/doodles/puc.jpg",
+      name: "Last one of his kind",
+    },
   ];
 
   function toChunks<T>(arr: T[], size: number): T[][] {
@@ -60,8 +65,7 @@ function Doodles() {
         <section className="fade-element  w-full gap-3 text-center flex flex-col items-center my-36">
           <h1 className="text-8xl font-bold font-khan ">Gallery</h1>
           <p className="max-w-[60%] text-xl font-light">
-            Semi-confidential doodles. Not all mine, some of them are from my
-            great friends, can you spot the them?
+            Semi-confidential space. A collection of my solified thoughts
           </p>
         </section>
 
@@ -91,7 +95,7 @@ function Doodles() {
                     size="small"
                     srcImage={group[1].srcImage}
                     date={group[1].date}
-                    title={group[0].name}
+                    title={group[1].name}
                     fluid
                   />
                 </div>

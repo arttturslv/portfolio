@@ -36,7 +36,7 @@ export default function Hero() {
             className="hover:underline transition-all flex group duration-200 py-1 px-2 "
           >
             <label className="">linkedin</label>
-            <label className="overflow-hidden max-w-0 group-hover:max-w-[5.4rem] transition-all duration-400 ease-out">
+            <label className="overflow-hidden max-w-0 group-hover:max-w-[5.8rem] transition-all duration-400 ease-out">
               {" "}
               /in/arttturslv
             </label>

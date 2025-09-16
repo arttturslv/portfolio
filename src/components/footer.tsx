@@ -1,5 +1,7 @@
 /** @format */
 
+import { NavLink } from "react-router";
+
 export default function Footer() {
   return (
     <footer className=" w-full flex justify-center">
@@ -7,8 +9,14 @@ export default function Footer() {
         <section className="flex justify-between sm:flex-row flex-col max-sm:space-y-4">
           <div className=" w-full sm:w-60">
             <p className="max-sm:text-center ">
-              developer | designer frontend | tech passionated | curious |
-              trying things
+              developer |{" "}
+              <NavLink
+                to="/doodles"
+                className="hover:underline transition-all duration-200 hover:text-orange-800"
+              >
+                self-proclaimed artist
+              </NavLink>{" "}
+              | tech passionated | curious | trying things
             </p>
           </div>
           <div>
@@ -16,21 +24,21 @@ export default function Footer() {
             <div className="w-full max-sm:hidden gap-2 flex justify-center">
               <a
                 href="https://github.com/arttturslv"
-                className="hover:underline transition-all duration-200"
+                className="hover:underline transition-all duration-200 hover:text-orange-800"
               >
                 github
               </a>
 
               <a
                 href="https://www.linkedin.com/in/arttturslv/"
-                className="hover:underline transition-all duration-200"
+                className="hover:underline transition-all duration-200 hover:text-orange-800"
               >
                 linkedin
               </a>
 
               <a
                 href="https://www.instagram.com/artur.pine"
-                className="hover:underline transition-all duration-200"
+                className="hover:underline transition-all duration-200 hover:text-orange-800"
               >
                 instagram
               </a>

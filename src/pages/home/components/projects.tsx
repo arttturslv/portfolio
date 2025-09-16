@@ -49,7 +49,7 @@ export default function Projects() {
 
     const st = ScrollTrigger.create({
       trigger: container,
-      start: "top top", // "assim que os projects estiverem centralizados, inicia"
+      start: "center center", // "assim que os projects estiverem centralizados, inicia"
       end: () => `+=${window.innerHeight * transitions * 0.5}`, // cada passo ocupa 1 viewport
       pin: true,
       scrub: 0.6,
@@ -155,18 +155,15 @@ export default function Projects() {
                 loading="lazy"
                 className="max-h-[75%] object-contain  z-10"
               />
-
-              <div className=" w-full text-center">
-                <h4 className="font-semibold text-lg">
-                  {projects[activeIndex].description}
-                </h4>
-              </div>
             </div>
           </div>
         </div>
 
         <div className="w-full flex justify-center ">
-          <Link to="projects" className="underline">
+          <Link
+            to="projects"
+            className="underline transition-all duration-200 hover:text-orange-800"
+          >
             see all projects
           </Link>
         </div>

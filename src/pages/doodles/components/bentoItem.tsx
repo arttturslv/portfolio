@@ -24,9 +24,9 @@ export default function BentoItem({
     if (fluid) return "w-full h-full"; // preenchimento total da célula da grid
     switch (size) {
       case "large":
-        return "min-w-[50vw] min-h-[50vw] lg:w-[50vw] lg:h-[60vw] h-[70vw] opacity-20 bg-red";
+        return "min-w-[50vw] min-h-[50vw] lg:w-[50vw] lg:h-[60vw] h-[70vw] bg-red";
       case "medium":
-        return "lg:h-full h-[50vw] opacity-20 bg-green";
+        return "lg:h-full h-[50vw] bg-green";
       case "small":
         return "lg:h-[20vw] w-[50vw] h-[50vw] bg-blue";
       default:
@@ -36,19 +36,17 @@ export default function BentoItem({
 
   return (
     <div
-      className={` fade-element  relative group rounded-xl border-gray-100 border-2 bg-white hover:invert transition-all duration-700 ease-in-out flex items-center justify-center overflow-hidden ${sizeStyle()}`}
+      className={` relative group rounded-xl hover:rounded-4xl transition-all duration-500 ease-in-out flex items-center justify-center overflow-hidden ${sizeStyle()}`}
     >
       <span
-        className={` ${
-          isDark && "invert"
-        } absolute  z-50 top-3 flex justify-between w-[90%]  left-4 text-sm transition-all duration-400 `}
+        className={` absolute  z-50 top-3   mix-blend-difference text-white flex justify-between w-[90%]  left-4 text-sm transition-all duration-400 `}
       >
         <label>{date}</label>
         <label>{title}</label>
       </span>
       <div className="w-full flex justify-center h-full">
         <img
-          className="  object-contain transition-all duration-700 "
+          className="w-full  group-hover:scale-105 object-cover transition-all duration-700 "
           src={srcImage}
         />
       </div>
