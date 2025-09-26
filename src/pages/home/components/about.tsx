@@ -98,12 +98,12 @@ export default function About() {
             />
             <img
               src="/assets/images/interests/sapo.png"
-              className="hidden-img w-42 absolute left-64 bottom-0"
+              className="hidden-img w-42 absolute sm:left-64 left-54 bottom-0"
               alt=""
             />
             <img
               src="/assets/images/interests/puc.png"
-              className="hidden-img w-20 absolute right-80 bottom-22"
+              className="hidden-img w-20 absolute sm:right-80 right-65  sm:bottom-22 bottom-18"
               alt=""
             />
           </div>
@@ -114,10 +114,10 @@ export default function About() {
             I’m a developer based in Belo Horizonte, working at{" "}
             <NavLink
               to="/"
-              className=" hover:underline transition-all duration-200 hover:text-orange-800"
+              className=" hover:underline transition-all duration-200 font-medium text-green-950 hover:text-orange-800"
             >
               @FACSS
-            </NavLink>{" "}
+            </NavLink>
             , dedicated to crafting digital experiences, putting ideas into
             code. I believe in using my skills to make the world a better place.
             <br></br>

@@ -5,7 +5,10 @@ import ReactDOM from "react-dom";
 import { gsap } from "gsap";
 
 interface CustomViewerProps {
-  image: string | null;
+  image: {
+    src: string;
+    title: string;
+  } | null;
   closeViewer: () => void;
 }
 
@@ -46,10 +49,9 @@ export default function ImageViewer({ image, closeViewer }: CustomViewerProps) {
   };
 
   return ReactDOM.createPortal(
-    <div className="fixed top-0 left-0 w-screen h-screen z-50 flex items-center justify-center">
+    <div className="fixed top-0 left-0 w-screen h-screen z-50">
       <div
         ref={overlayRef}
-        onClick={handleClose}
         className="absolute top-0 left-0 w-screen h-screen bg-black/50"
       >
         <img
@@ -58,12 +60,20 @@ export default function ImageViewer({ image, closeViewer }: CustomViewerProps) {
         />
       </div>
 
-      <img
-        ref={imageRef}
-        className="relative max-w-[90%] max-h-[90%] object-contain"
-        src={image}
-        alt="viewer"
-      />
+      <div
+        onClick={handleClose}
+        className="relative w-full h-full  flex items-center justify-center flex-col"
+      >
+        <img
+          className="relative max-w-[90%] max-h-[90%] object-contain"
+          ref={imageRef}
+          src={image.src}
+          alt={image.title}
+        />
+        <label className="z-90 invert text-xl py-2" htmlFor="">
+          {image.title}
+        </label>
+      </div>
     </div>,
     document.getElementById("root") as HTMLElement
   );

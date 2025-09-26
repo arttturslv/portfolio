@@ -38,6 +38,7 @@ export default function Projects() {
   const [activeIndex, setActiveIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const projectRef = useRef<HTMLDivElement | null>(null);
+  const imageRefs = useRef<HTMLImageElement[]>([]);
 
   const buttonsRef = useRef<Array<HTMLButtonElement | null>>([]);
 
@@ -74,18 +75,48 @@ export default function Projects() {
     };
   }, []);
 
+  // useEffect(() => {
+  //   if (!projectRef.current) return;
+
+  //   const project = projectRef.current;
+  //   if (project) {
+  //     gsap.fromTo(
+  //       project,
+  //       { autoAlpha: 0, y: 80 },
+  //       { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }
+  //     );
+  //   }
+
+  //   buttonsRef.current.forEach((btn, i) => {
+  //     if (!btn) return;
+  //     gsap.to(btn, {
+  //       scale: i === activeIndex ? 1.05 : 1,
+  //       color: i === activeIndex ? "#0c090d" : "#f1f2f6",
+  //       duration: 0.35,
+  //       ease: "power3.out",
+  //     });
+  //   });
+  // }, [activeIndex]);
+
   useEffect(() => {
-    if (!projectRef.current) return;
+    imageRefs.current.forEach((img, i) => {
+      if (!img) return;
+      if (i === activeIndex) {
+        gsap.to(img, {
+          autoAlpha: 1,
+          duration: 0.6,
+          ease: "power3.out",
+        });
+      } else {
+        gsap.to(img, {
+          autoAlpha: 0,
+          duration: 0.6,
+          ease: "power3.inOut",
+        });
+      }
+    });
 
-    const project = projectRef.current;
-    if (project) {
-      gsap.fromTo(
-        project,
-        { autoAlpha: 0, y: 80 },
-        { autoAlpha: 1, y: 0, duration: 0.6, ease: "power3.out" }
-      );
-    }
-
+    // anima os botões laterais
     buttonsRef.current.forEach((btn, i) => {
       if (!btn) return;
       gsap.to(btn, {
@@ -118,7 +149,7 @@ export default function Projects() {
                   type="button"
                   className={`${
                     isDark && "invert-75"
-                  } text-gray-400 text-5xl invert-25 text-left focus:outline-none`}
+                  } text-gray-400 md:text-5xl sm:text-4xl invert-25 text-left focus:outline-none`}
                   onClick={() => {
                     const containerTop =
                       containerRef.current!.getBoundingClientRect().top +

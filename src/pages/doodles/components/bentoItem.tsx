@@ -18,10 +18,13 @@ export default function BentoItem({
   fluid = false,
   title,
 }: BentoItemProps) {
-  const [imageSelected, setImageSelected] = React.useState<string | null>(null);
+  const [imageSelected, setImageSelected] = React.useState<{
+    src: string;
+    title: string;
+  } | null>(null);
 
-  const openViewer = (srcImage: string) => {
-    setImageSelected(srcImage);
+  const openViewer = (srcImage: string, title: string) => {
+    setImageSelected({ src: srcImage, title: title });
   };
   const closeViewer = () => {
     setImageSelected(null);
@@ -58,7 +61,7 @@ export default function BentoItem({
         </span>
         <div className="w-full flex justify-center h-full">
           <img
-            onClick={() => openViewer(srcImage)}
+            onClick={() => openViewer(srcImage, title)}
             className="w-full  group-hover:scale-105 object-cover transition-all duration-700 "
             src={srcImage}
           />

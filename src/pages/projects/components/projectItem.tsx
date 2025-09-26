@@ -51,7 +51,7 @@ export default function ProjectItem({
         <div className="sm:w-1/3 flex flex-col sm:gap-2 gap-0.5 ">
           <div
             style={{ backgroundColor: `rgb(${color.join(",")})` }}
-            className={` w-full max-h-56 flex items-center justify-center overflow-hidden relative group transition-all duration-300`}
+            className={` w-full max-h-56 h-full flex items-center justify-center overflow-hidden relative group transition-all duration-300`}
           >
             <img
               crossOrigin="anonymous"
@@ -66,7 +66,7 @@ export default function ProjectItem({
           </div>
           <div
             style={{ backgroundColor: `rgb(${color.join(",")})` }}
-            className=" w-full  flex items-center justify-center max-sm:items-start max-h-56 overflow-hidden relative  group transition-all duration-300"
+            className=" w-full  h-full flex items-center justify-center max-sm:items-start max-h-56 overflow-hidden relative  group transition-all duration-300"
           >
             <img
               className="h-full  object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
@@ -84,9 +84,9 @@ export default function ProjectItem({
               src={mainImage.src}
             />
           </div>
-          <div className="w-full group-hover:-bottom-22 duration-500 flex-col items-start transition-all ease-out absolute bottom-0 h-22 px-8 py-4 flex  from-black/70 to-black/0 bg-linear-to-t">
+          <div className="w-full group-hover:-bottom-22 duration-500 flex-col items-start transition-all ease-out absolute bottom-0 sm:h-22 h-26 px-8 py-4 flex  from-black/70 to-black/0 bg-linear-to-t">
             <h3 className="text-3xl font-extrabold text-white">{title}</h3>
-            <p className="text-white">{stack.join(", ")}</p>
+            <p className="text-white max-sm:text-sm ">{stack.join(", ")}</p>
           </div>
         </div>
       </div>

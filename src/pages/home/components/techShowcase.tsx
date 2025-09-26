@@ -10,6 +10,7 @@ import nodeIcon from "/assets/images/techstack/node.svg";
 
 import { ThemeContext } from "../../../routes/routes";
 import { useContext } from "react";
+import Tooltip from "../../../components/tooltip";
 
 export default function TechShowcase() {
   const { isDark } = useContext(ThemeContext);
@@ -22,33 +23,46 @@ export default function TechShowcase() {
           isDark && "invert"
         } flex sm:gap-18 gap-8 flex-wrap items-center justify-center`}
       >
-        <span className="flex flex-col gap-1 items-center">
-          <img loading="lazy" src={javascriptIcon} className="w-14" alt="" />
-        </span>
+        <Tooltip content="JavaScript">
+          <span className="flex flex-col gap-1 items-center">
+            <img loading="lazy" src={javascriptIcon} className="w-14" alt="" />
+          </span>
+        </Tooltip>
+        <Tooltip content="TypeScript">
+          <span className="flex flex-col gap-1 items-center">
+            <img loading="lazy" src={typescriptIcon} className="w-14" alt="" />
+          </span>
+        </Tooltip>
 
-        <span className="flex flex-col gap-1 items-center">
-          <img loading="lazy" src={typescriptIcon} className="w-14" alt="" />
-        </span>
+        <Tooltip content="React">
+          <span className="flex flex-col gap-1 items-center">
+            <img loading="lazy" src={reactIcon} className="w-14" alt="" />
+          </span>
+        </Tooltip>
 
-        <span className="flex flex-col gap-1 items-center">
-          <img loading="lazy" src={reactIcon} className="w-14" alt="" />
-        </span>
+        <Tooltip content="Node.js">
+          <span className="flex flex-col gap-1 items-center">
+            <img loading="lazy" src={nodeIcon} className="w-14" alt="" />
+          </span>
+        </Tooltip>
 
-        <span className="flex flex-col gap-1 items-center">
-          <img loading="lazy" src={nodeIcon} className="w-14" alt="" />
-        </span>
+        <Tooltip content="Express">
+          <span className="flex flex-col gap-1 items-center">
+            <img loading="lazy" src={expressIcon} className="w-14" alt="" />
+          </span>
+        </Tooltip>
 
-        <span className="flex flex-col gap-1 items-center">
-          <img loading="lazy" src={expressIcon} className="w-14" alt="" />
-        </span>
+        <Tooltip content="TailwindCSS">
+          <span className="flex flex-col gap-1 items-center">
+            <img loading="lazy" src={tailwindIcon} className="w-14" alt="" />
+          </span>
+        </Tooltip>
 
-        <span className="flex flex-col gap-1 items-center">
-          <img loading="lazy" src={tailwindIcon} className="w-14" alt="" />
-        </span>
-
-        <span className="flex flex-col gap-1 items-center">
-          <img loading="lazy" src={figmaIcon} className="w-14" alt="" />
-        </span>
+        <Tooltip content="Figma">
+          <span className="flex flex-col gap-1 items-center">
+            <img loading="lazy" src={figmaIcon} className="w-14" alt="" />
+          </span>
+        </Tooltip>
       </div>
     </div>
   );

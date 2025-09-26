@@ -57,28 +57,12 @@ function Projects() {
       <div className="w-full  ">
         <Navbar></Navbar>
         <section className="fade-element  w-full gap-3 text-center flex flex-col items-center my-36">
-          <h1 className="text-8xl font-bold font-khan ">Projects</h1>
-          <p className="max-w-[60%] text-xl font-light">
+          <h1 className="text-6xl sm:text-8xl font-bold font-khan  ">
+            Projects
+          </h1>
+          <p className="max-w-[60%] text-lg sm:text-xl font-light">
             Made with love, inspiration and effort
           </p>
-
-          {/* <div className="flex gap-2 flex-wrap justify-center">
-            <span className="py-1 cursor-pointer px-2 bg-white hover:bg-gray-800 hover:text-white duration-200 transition-all shadow-sm rounded-md">
-              React
-            </span>
-            <span className="py-1 cursor-pointer px-2 bg-white hover:bg-gray-800 hover:text-white duration-200 transition-all shadow-sm rounded-md">
-              Node
-            </span>
-            <span className="py-1 cursor-pointer  px-2 bg-white hover:bg-gray-800 hover:text-white duration-200 transition-all shadow-sm rounded-md">
-              Figma
-            </span>
-            <span className="py-1 cursor-pointer px-2 bg-white hover:bg-gray-800 hover:text-white duration-200 transition-all shadow-sm rounded-md">
-              React Native
-            </span>
-            <span className="py-1 cursor-pointer px-2 bg-white hover:bg-gray-800 hover:text-white duration-200 transition-all shadow-sm rounded-md">
-              HTML/CSS
-            </span>
-          </div> */}
         </section>
 
         <section className="my-32  space-y-32 sm:space-y-64 flex flex-col w-full items-center justify-center ">
