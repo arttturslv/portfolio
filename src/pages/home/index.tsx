@@ -6,14 +6,16 @@ import Footer from "../../components/footer";
 import Hero from "./components/hero";
 import Navbar from "../../components/navbar";
 import Projects from "./components/projects";
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ThemeContext } from "../../routes/routes";
+import Contact from "./components/contact";
 
 gsap.registerPlugin(ScrollTrigger);
 function Home() {
   const { isDark } = useContext(ThemeContext);
+  const [isContact, setContact] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -34,6 +36,14 @@ function Home() {
     return () => ctx.revert();
   }, []);
 
+  const closeContact = () => {
+    setContact(false);
+  };
+
+  const openContact = () => {
+    setContact(true);
+  };
+
   return (
     <div
       ref={containerRef}
@@ -42,10 +52,10 @@ function Home() {
       } w-full overflow-x-hidden flex flex-col bg-primary-light dark:bg-primary-dark text-primary-dark dark:text-primary-light items-center justify-center`}
     >
       <Navbar></Navbar>
-
+      <Contact closeContact={closeContact} showContact={isContact}></Contact>
       <div className="w-full max-w-[1400px] px-2 sm:px-12  ">
         <Hero />
-        <About />
+        <About openContact={openContact} />
 
         <Projects></Projects>
 

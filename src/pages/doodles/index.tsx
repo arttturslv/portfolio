@@ -8,6 +8,7 @@ import { useContext, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ThemeContext } from "../../routes/routes";
+import WaveformPlayer from "../../components/Wave";
 
 gsap.registerPlugin(ScrollTrigger);
 function Doodles() {
@@ -33,23 +34,52 @@ function Doodles() {
   const data = [
     {
       date: "2020-04-19",
-      srcImage: "/assets/doodles/connection.jpeg",
+      type: "image",
+      src: "/assets/doodles/connection.jpeg",
       name: "Long distance connection",
     },
     {
       date: "2023-04-01",
-      srcImage: "/assets/doodles/puc.jpg",
+      type: "image",
+      src: "/assets/doodles/puc.jpg",
       name: "Last one of his kind",
     },
     {
       date: "2020-04-19",
-      srcImage: "/assets/doodles/little-babies.jpg",
+      type: "image",
+      src: "/assets/doodles/little-babies.jpg",
       name: "Little babies",
     },
     {
       date: "2023-04-01",
-      srcImage: "/assets/doodles/red-moon.jpg",
+      type: "image",
+      src: "/assets/doodles/red-moon.jpg",
       name: "無限月読",
+    },
+
+    {
+      date: "2023-04-01",
+      type: "image",
+      src: "/assets/doodles/frog.jpg",
+      name: "Frog",
+    },
+    {
+      date: "2022-05-12",
+      type: "audio",
+      src: "/assets/sounds/derupdoop.wav",
+      name: "derupdoop.wav",
+    },
+    {
+      date: "2020-04-19",
+      type: "image",
+      src: "/assets/doodles/window.jpg",
+      name: "Window",
+    },
+    {
+      date: "2023-04-01",
+      type: "image",
+      src: "/assets/doodles/yesterday-me.jpg",
+      name: "Yesterday me",
     },
   ];
 
@@ -61,6 +91,32 @@ function Doodles() {
   const chunks = toChunks(data, 4);
 
   const { isDark } = useContext(ThemeContext);
+
+  function renderItem(item: any, size: "large" | "medium" | "small") {
+    if (item.type === "audio") {
+      return (
+        <div className="bg-white relative group rounded-xl hover:rounded-4xl transition-all duration-500 ease-in-out flex items-center justify-center overflow-hidden w-full h-full">
+          <span className="absolute z-50 top-3 mix-blend-difference text-white flex justify-between w-[90%] left-4 text-sm">
+            <label>{item.date}</label>
+            <label>{item.name}</label>
+          </span>
+          <div className="w-full flex justify-center items-center h-full">
+            <WaveformPlayer audioUrl={item.src} />
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <BentoItem
+        size={size}
+        srcImage={item.src}
+        date={item.date}
+        title={item.name}
+        fluid
+      />
+    );
+  }
 
   return (
     <div
@@ -83,56 +139,54 @@ function Doodles() {
           {chunks.map((group, gi) => (
             <div
               key={gi}
-              className={
-                "grid grid-flow-dense gap-4 sm:grid-cols-2  lg:grid-cols-4 auto-rows-[12rem] lg:auto-rows-[18rem]"
-              }
+              className="grid grid-flow-dense gap-4 sm:grid-cols-2 lg:grid-cols-4 auto-rows-[12rem] lg:auto-rows-[18rem]"
             >
-              {group[0] && (
-                <div className="lg:col-span-2 lg:row-span-2">
-                  <BentoItem
-                    size="large"
-                    srcImage={group[0].srcImage}
-                    date={group[0].date}
-                    title={group[0].name}
-                    fluid
-                  />
-                </div>
-              )}
-
-              {group[1] && (
-                <div className="lg:col-start-3 lg:row-start-1">
-                  <BentoItem
-                    size="small"
-                    srcImage={group[1].srcImage}
-                    date={group[1].date}
-                    title={group[1].name}
-                    fluid
-                  />
-                </div>
-              )}
-
-              {group[2] && (
-                <div className="lg:col-start-4 lg:row-start-1">
-                  <BentoItem
-                    size="small"
-                    srcImage={group[2].srcImage}
-                    date={group[2].date}
-                    title={group[2].name}
-                    fluid
-                  />
-                </div>
-              )}
-
-              {group[3] && (
-                <div className="lg:col-start-3 lg:col-span-2 lg:row-start-2">
-                  <BentoItem
-                    size="medium"
-                    srcImage={group[3].srcImage}
-                    date={group[3].date}
-                    title={group[3].name}
-                    fluid
-                  />
-                </div>
+              {gi % 2 === 0 ? (
+                <>
+                  {group[0] && (
+                    <div className="lg:col-span-2 lg:row-span-2">
+                      {renderItem(group[0], "large")}
+                    </div>
+                  )}
+                  {group[1] && (
+                    <div className="lg:col-start-3 lg:row-start-1">
+                      {renderItem(group[1], "small")}
+                    </div>
+                  )}
+                  {group[2] && (
+                    <div className="lg:col-start-4 lg:row-start-1">
+                      {renderItem(group[2], "small")}
+                    </div>
+                  )}
+                  {group[3] && (
+                    <div className="lg:col-start-3 lg:col-span-2 lg:row-start-2">
+                      {renderItem(group[3], "medium")}
+                    </div>
+                  )}
+                </>
+              ) : (
+                <>
+                  {group[0] && (
+                    <div className="lg:col-start-3 lg:col-span-2 lg:row-span-2">
+                      {renderItem(group[0], "large")}
+                    </div>
+                  )}
+                  {group[1] && (
+                    <div className="lg:col-start-1 lg:row-start-1">
+                      {renderItem(group[1], "small")}
+                    </div>
+                  )}
+                  {group[2] && (
+                    <div className="lg:col-start-2 lg:row-start-1">
+                      {renderItem(group[2], "small")}
+                    </div>
+                  )}
+                  {group[3] && (
+                    <div className="lg:col-start-1 lg:col-span-2 lg:row-start-2">
+                      {renderItem(group[3], "medium")}
+                    </div>
+                  )}
+                </>
               )}
             </div>
           ))}

@@ -3,7 +3,10 @@ import React, { useLayoutEffect } from "react";
 import { gsap } from "gsap";
 import { NavLink } from "react-router";
 
-export default function About() {
+interface AboutProps {
+  openContact: () => void;
+}
+export default function About({ openContact }: AboutProps) {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const tl = React.useRef<gsap.core.Timeline>(null);
 
@@ -126,7 +129,7 @@ export default function About() {
           </p>
 
           <a
-            href="mailto:arttturslv@gmail.com"
+            onClick={openContact}
             className="underline transition-all duration-200 hover:text-orange-800"
           >
             talk to me
