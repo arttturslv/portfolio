@@ -96,7 +96,7 @@ function Doodles() {
     if (item.type === "audio") {
       return (
         <div className="bg-white relative group rounded-xl hover:rounded-4xl transition-all duration-500 ease-in-out flex items-center justify-center overflow-hidden w-full h-full">
-          <span className="absolute z-50 top-3 mix-blend-difference text-white flex justify-between w-[90%] left-4 text-sm">
+          <span className="absolute z-50 top-3 mix-blend-difference text-white flex justify-between w-[90%] left-4 text-sm font-light">
             <label>{item.date}</label>
             <label>{item.name}</label>
           </span>

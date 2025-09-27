@@ -62,6 +62,7 @@ export default function ProjectItem({
               }}
               className="h-full w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
               src={terImage.src}
+              alt={`showcase image 1 - ${title}`}
             />
           </div>
           <div
@@ -71,6 +72,7 @@ export default function ProjectItem({
             <img
               className="h-full  object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
               src={secImage.src}
+              alt={`showcase image 2 - ${title}`}
             />
           </div>
         </div>
@@ -82,6 +84,7 @@ export default function ProjectItem({
             <img
               className="h-full shadow-xl w-full object-top object-cover rounded-sm transition-transform duration-500 ease-in-out"
               src={mainImage.src}
+              alt={`showcase image 3 - ${title}`}
             />
           </div>
           <div className="w-full group-hover:-bottom-22 duration-500 flex-col items-start transition-all ease-out absolute bottom-0 sm:h-22 h-26 px-8 py-4 flex  from-black/70 to-black/0 bg-linear-to-t">

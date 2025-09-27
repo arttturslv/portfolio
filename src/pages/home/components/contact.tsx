@@ -45,6 +45,7 @@ export default function Contact({ closeContact, showContact }: ContactProps) {
     >
       <div className="w-full flex justify-end">
         <img
+          alt="close"
           onClick={handleClose}
           className="hover:underline transition-all duration-200 font-medium  hover:text-orange-800"
           src="assets/icon/x.svg"
@@ -116,15 +117,15 @@ export default function Contact({ closeContact, showContact }: ContactProps) {
 
       <div className="w-full flex max-md:px-12 justify-between  max-w-[624px]">
         <div className="flex flex-col items-center justify-center gap-1">
-          <img className="" src="assets/icon/mail.svg" />
+          <img alt="mail" src="assets/icon/mail.svg" />
           <span className="hidden md:block">arttturslv@gmail.com</span>
         </div>
         <div className="flex flex-col items-center justify-center gap-1">
-          <img className="" src="assets/icon/linkedin.svg" />
+          <img alt="linkedin" src="assets/icon/linkedin.svg" />
           <span className="hidden md:block">linkedin/in/arttturslv</span>
         </div>
         <div className="flex flex-col items-center justify-center gap-1">
-          <img className="" src="assets/icon/github.svg" />
+          <img alt="github" src="assets/icon/github.svg" />
           <span className="hidden md:block">github/arttturslv</span>
         </div>
       </div>

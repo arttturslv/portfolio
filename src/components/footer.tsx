@@ -24,6 +24,7 @@ export default function Footer() {
             <div className="w-full max-sm:hidden gap-2 flex justify-center">
               <a
                 href="https://github.com/arttturslv"
+                target="_blank"
                 className="hover:underline transition-all duration-200 hover:text-orange-800"
               >
                 github
@@ -31,6 +32,7 @@ export default function Footer() {
 
               <a
                 href="https://www.linkedin.com/in/arttturslv/"
+                target="_blank"
                 className="hover:underline transition-all duration-200 hover:text-orange-800"
               >
                 linkedin
@@ -38,6 +40,7 @@ export default function Footer() {
 
               <a
                 href="https://www.instagram.com/artur.pine"
+                target="_blank"
                 className="hover:underline transition-all duration-200 hover:text-orange-800"
               >
                 instagram

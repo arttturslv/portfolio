@@ -61,6 +61,7 @@ export default function BentoItem({
         </span>
         <div className="w-full flex justify-center h-full">
           <img
+            alt={title}
             onClick={() => openViewer(srcImage, title)}
             className="w-full  group-hover:scale-105 object-cover transition-all duration-700 "
             src={srcImage}

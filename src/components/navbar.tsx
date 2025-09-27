@@ -113,6 +113,7 @@ function Navbar() {
                   isDark && "invert-100"
                 } group-hover:scale-105 transition-all duration-200`}
                 src={"assets/icon/menu.svg"}
+                alt="options"
               />
             </div>
 
@@ -121,6 +122,7 @@ function Navbar() {
               className=" invert  w-8  flex items-center justify-end cursor-pointer group"
             >
               <img
+                alt="change theme"
                 className={`${
                   isDark && "invert-100"
                 } group-hover:scale-105 transition-all duration-200`}

@@ -22,10 +22,11 @@ export default function Hero() {
         <div className="w-full gap-12 flex justify-center">
           <a
             href="https://github.com/arttturslv"
-            className="hover:underline transition-all flex group duration-200 py-1 px-2 "
+            target="_blank"
+            className="hover:underline transition-all cursor-pointer flex group duration-200 py-1 px-2 "
           >
-            <label className="">github</label>
-            <label className="overflow-hidden max-w-0 group-hover:max-w-[5.4rem] transition-all duration-400 ease-out">
+            <label className="cursor-pointer">github</label>
+            <label className="overflow-hidden cursor-pointer max-w-0 group-hover:max-w-[5.4rem] transition-all duration-400 ease-out">
               {" "}
               /arttturslv
             </label>
@@ -33,10 +34,11 @@ export default function Hero() {
 
           <a
             href="https://www.linkedin.com/in/arttturslv/"
-            className="hover:underline transition-all flex group duration-200 py-1 px-2 "
+            target="_blank"
+            className="hover:underline cursor-pointer transition-all flex group duration-200 py-1 px-2 "
           >
-            <label className="">linkedin</label>
-            <label className="overflow-hidden max-w-0 group-hover:max-w-[5.8rem] transition-all duration-400 ease-out">
+            <label className="cursor-pointer">linkedin</label>
+            <label className="overflow-hidden cursor-pointer max-w-0 group-hover:max-w-[5.8rem] transition-all duration-400 ease-out">
               {" "}
               /in/arttturslv
             </label>
@@ -44,10 +46,11 @@ export default function Hero() {
 
           <a
             href="https://www.instagram.com/artur.pine"
-            className="hover:underline transition-all flex group duration-200 py-1 px-2 "
+            target="_blank"
+            className="hover:underline transition-all cursor-pointer flex group duration-200 py-1 px-2 "
           >
-            <label className="">instagram</label>
-            <label className="overflow-hidden max-w-0 group-hover:max-w-[5.4rem] transition-all duration-400 ease-out">
+            <label className="cursor-pointer">instagram</label>
+            <label className="overflow-hidden cursor-pointer max-w-0 group-hover:max-w-[5.4rem] transition-all duration-400 ease-out">
               {" "}
               /artur.pine
             </label>

@@ -57,6 +57,7 @@ export default function ImageViewer({ image, closeViewer }: CustomViewerProps) {
         <img
           className="absolute top-2 right-6 invert"
           src="assets/icon/x.svg"
+          alt="close"
         />
       </div>
 

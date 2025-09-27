@@ -43,8 +43,9 @@ const WaveformPlayer: React.FC<{ audioUrl: string }> = ({ audioUrl }) => {
 
       <div className="w-full flex justify-center">
         <img
+          alt="play / pause"
           onClick={togglePlay}
-          className="] "
+          className="cursor-pointer "
           src={isPlaying ? "assets/icon/pause1.svg" : "assets/icon/play1.svg"}
         />
       </div>

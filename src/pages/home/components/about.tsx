@@ -83,31 +83,36 @@ export default function About({ openContact }: AboutProps) {
         >
           <div className="relative group w-72">
             <img
+              loading="lazy"
               src="/assets/images/interests/eu.png"
               className="w-full main group-hover:shadow-xl duration-400 transition-all"
-              alt=""
+              alt="artur"
             />
-            <div className="absolute top-0 bg-gradient-to-t w-full h-42 from-transparent to-primary-light/30"></div>
+            <div className="absolute top-0 bg-gradient-to-t w-full h-42 from-transparent dark:to-primary-dark/80 to-primary-light/30"></div>
 
             <img
-              src="/assets/images/interests/moto.png"
+              loading="lazy"
+              src="/assets/images/interests/moto.webp"
               className="hidden-img w-28 absolute left-48 bottom-64"
-              alt=""
+              alt="moto"
             />
             <img
-              src="/assets/images/interests/torta.png"
+              loading="lazy"
+              src="/assets/images/interests/torta.webp"
               className="hidden-img w-20 absolute right-58 bottom-58"
-              alt=""
+              alt="torta de frutas vermelhas"
             />
             <img
-              src="/assets/images/interests/sapo.png"
+              loading="lazy"
+              src="/assets/images/interests/sapo.webp"
               className="hidden-img w-42 absolute sm:left-64 left-54 bottom-0"
-              alt=""
+              alt="sapo"
             />
             <img
-              src="/assets/images/interests/puc.png"
+              loading="lazy"
+              src="/assets/images/interests/puc.webp"
               className="hidden-img w-20 absolute sm:right-80 right-65  sm:bottom-22 bottom-18"
-              alt=""
+              alt="artur formando"
             />
           </div>
         </div>
@@ -116,7 +121,8 @@ export default function About({ openContact }: AboutProps) {
           <p className="lg:text-4xl md:text-3xl text-2xl font-light">
             I’m a developer based in Belo Horizonte, working at{" "}
             <NavLink
-              to="/"
+              target="_blank"
+              to="https://www.linkedin.com/company/facss-io/"
               className=" hover:underline transition-all duration-200 font-medium text-green-950 hover:text-orange-800"
             >
               @FACSS
@@ -128,12 +134,12 @@ export default function About({ openContact }: AboutProps) {
             technology & the potential of our species.
           </p>
 
-          <a
+          <button
             onClick={openContact}
-            className="underline transition-all duration-200 hover:text-orange-800"
+            className="underline cursor-pointer p-0 m-0 bg-transparent border-none transition-all duration-200 hover:text-orange-800"
           >
             talk to me
-          </a>
+          </button>
         </div>
       </div>
     </section>
