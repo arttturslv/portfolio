@@ -1,6 +1,6 @@
 /** @format */
 
-import { NavLink } from "react-router";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -10,12 +10,12 @@ export default function Footer() {
           <div className=" w-full sm:w-60">
             <p className="max-sm:text-center ">
               developer |{" "}
-              <NavLink
-                to="/doodles"
+              <Link
+                href="/doodles"
                 className="hover:underline transition-all duration-200 hover:text-orange-800"
               >
                 self-proclaimed artist
-              </NavLink>{" "}
+              </Link>{" "}
               | tech passionated | curious | trying things
             </p>
           </div>

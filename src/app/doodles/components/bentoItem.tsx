@@ -2,6 +2,7 @@
 
 import React from "react";
 import ImageViewer from "../../../components/imageViewer";
+import Image from "next/image";
 
 interface BentoItemProps {
   size: "large" | "medium" | "small";
@@ -60,7 +61,8 @@ export default function BentoItem({
           <label>{title}</label>
         </span>
         <div className="w-full flex justify-center h-full">
-          <img
+          <Image
+            fill
             alt={title}
             onClick={() => openViewer(srcImage, title)}
             className="w-full  group-hover:scale-105 object-cover transition-all duration-700 "

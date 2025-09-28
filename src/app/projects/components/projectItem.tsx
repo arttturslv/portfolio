@@ -1,7 +1,7 @@
 /** @format */
 
 import { useRef, useState } from "react";
-
+import Image from "next/image";
 interface image {
   src: string;
   alt: string;
@@ -53,7 +53,8 @@ export default function ProjectItem({
             style={{ backgroundColor: `rgb(${color.join(",")})` }}
             className={` w-full max-h-56 h-full flex items-center justify-center overflow-hidden relative group transition-all duration-300`}
           >
-            <img
+            <Image
+              fill
               crossOrigin="anonymous"
               ref={imgRef}
               onLoad={(e) => {
@@ -69,7 +70,8 @@ export default function ProjectItem({
             style={{ backgroundColor: `rgb(${color.join(",")})` }}
             className=" w-full  h-full flex items-center justify-center max-sm:items-start max-h-56 overflow-hidden relative  group transition-all duration-300"
           >
-            <img
+            <Image
+              fill
               className="h-full  object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
               src={secImage.src}
               alt={`showcase image 2 - ${title}`}
@@ -81,7 +83,8 @@ export default function ProjectItem({
           className="sm:w-2/3 flex items-center justify-center w-full overflow-hidden group relative transition-all duration-300"
         >
           <div className="w-full flex items-start justify-center  p-6 h-108 overflow-hidden ">
-            <img
+            <Image
+              fill
               className="h-full shadow-xl w-full object-top object-cover rounded-sm transition-transform duration-500 ease-in-out"
               src={mainImage.src}
               alt={`showcase image 3 - ${title}`}

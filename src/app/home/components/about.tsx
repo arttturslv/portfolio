@@ -1,7 +1,8 @@
 /** @format */
 import React, { useLayoutEffect } from "react";
 import { gsap } from "gsap";
-import { NavLink } from "react-router";
+import Link from "next/link";
+import Image from "next/image";
 
 interface AboutProps {
   openContact: () => void;
@@ -82,7 +83,9 @@ export default function About({ openContact }: AboutProps) {
           className="w-full  group flex items-center justify-center  fade-element "
         >
           <div className="relative group w-72">
-            <img
+            <Image
+              height={393}
+              width={392}
               loading="lazy"
               src="/assets/images/interests/eu.png"
               className="w-full main group-hover:shadow-xl duration-400 transition-all"
@@ -90,25 +93,33 @@ export default function About({ openContact }: AboutProps) {
             />
             <div className="absolute top-0 bg-gradient-to-t w-full h-42 from-transparent dark:to-primary-dark/80 to-primary-light/30"></div>
 
-            <img
+            <Image
+              width={165}
+              height={123}
               loading="lazy"
               src="/assets/images/interests/moto.webp"
               className="hidden-img w-28 absolute left-48 bottom-64"
               alt="moto"
             />
-            <img
+            <Image
+              width={125}
+              height={130}
               loading="lazy"
               src="/assets/images/interests/torta.webp"
               className="hidden-img w-20 absolute right-58 bottom-58"
               alt="torta de frutas vermelhas"
             />
-            <img
+            <Image
+              width={192}
+              height={186}
               loading="lazy"
               src="/assets/images/interests/sapo.webp"
               className="hidden-img w-42 absolute sm:left-64 left-54 bottom-0"
               alt="sapo"
             />
-            <img
+            <Image
+              width={110}
+              height={191}
               loading="lazy"
               src="/assets/images/interests/puc.webp"
               className="hidden-img w-20 absolute sm:right-80 right-65  sm:bottom-22 bottom-18"
@@ -120,13 +131,13 @@ export default function About({ openContact }: AboutProps) {
         <div className="space-y-3 fade-element ">
           <p className="lg:text-4xl md:text-3xl text-2xl font-light">
             I’m a developer based in Belo Horizonte, working at{" "}
-            <NavLink
+            <Link
               target="_blank"
-              to="https://www.linkedin.com/company/facss-io/"
+              href="https://www.linkedin.com/company/facss-io/"
               className=" hover:underline transition-all duration-200 font-medium text-green-950 hover:text-orange-800"
             >
               @FACSS
-            </NavLink>
+            </Link>
             , dedicated to crafting digital experiences, putting ideas into
             code. I believe in using my skills to make the world a better place.
             <br></br>

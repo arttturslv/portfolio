@@ -1,19 +1,20 @@
 /** @format */
 
-import { useContext, useEffect, useRef } from "react";
+"use client";
+
+import { useEffect, useRef } from "react";
 import Footer from "../../components/footer";
 import Navbar from "../../components/navbar";
 import ProjectItem from "./components/projectItem";
-import { useLocation } from "react-router";
+import {} from "react-router";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ThemeContext } from "../../routes/routes";
 
 gsap.registerPlugin(ScrollTrigger);
 function Projects() {
-  const { isDark } = useContext(ThemeContext);
+  //const { isDark } = useContext(ThemeContext);
+  const isDark = false;
 
-  const location = useLocation();
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -33,19 +34,19 @@ function Projects() {
     return () => ctx.revert();
   }, []);
 
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const scrollTo = params.get("scrollTo"); // "congrats", "postaai", etc.
-    if (!scrollTo) return;
+  // useEffect(() => {
+  //   const params = new URLSearchParams(location.search);
+  //   const scrollTo = params.get("scrollTo"); // "congrats", "postaai", etc.
+  //   if (!scrollTo) return;
 
-    const el = document.getElementById(scrollTo);
-    if (el) {
-      // esperar o próximo tick para garantir que ScrollTrigger montou
-      setTimeout(() => {
-        el.scrollIntoView({ behavior: "smooth", block: "center" });
-      }, 100);
-    }
-  }, [location.search]);
+  //   const el = document.getElementById(scrollTo);
+  //   if (el) {
+  //     // esperar o próximo tick para garantir que ScrollTrigger montou
+  //     setTimeout(() => {
+  //       el.scrollIntoView({ behavior: "smooth", block: "center" });
+  //     }, 100);
+  //   }
+  // }, [location.search]);
 
   return (
     <div
@@ -68,17 +69,17 @@ function Projects() {
         <section className="my-32  space-y-32 sm:space-y-64 flex flex-col w-full items-center justify-center ">
           <ProjectItem
             mainImage={{
-              src: "assets/images/projects/congrats/congrats-full.png",
+              src: "/assets/images/projects/congrats/congrats-full.png",
               alt: "Congrats main image",
               full: false,
             }}
             terImage={{
-              src: "assets/images/projects/congrats/congrats-sec.png",
+              src: "/assets/images/projects/congrats/congrats-sec.png",
               alt: "Congrats sec image",
               full: false,
             }}
             secImage={{
-              src: "assets/images/projects/congrats/congrats-terc.png",
+              src: "/assets/images/projects/congrats/congrats-terc.png",
               alt: "Congrats sec image",
               full: false,
             }}
@@ -99,17 +100,17 @@ A proposta é transformar cada celebração em uma experiência memorável, tant
 
           <ProjectItem
             mainImage={{
-              src: "assets/images/projects/postaai/postaai-full.png",
+              src: "/assets/images/projects/postaai/postaai-full.png",
               alt: "Posta ai main image",
               full: false,
             }}
             terImage={{
-              src: "assets/images/projects/postaai/postaai-terc.png",
+              src: "/assets/images/projects/postaai/postaai-terc.png",
               alt: "Posta ai terc image",
               full: false,
             }}
             secImage={{
-              src: "assets/images/projects/postaai/postaai-sec.png",
+              src: "/assets/images/projects/postaai/postaai-sec.png",
               alt: "Posta ai sec image",
               full: false,
             }}
@@ -122,17 +123,17 @@ A proposta é transformar cada celebração em uma experiência memorável, tant
 
           <ProjectItem
             mainImage={{
-              src: "assets/images/projects/minimizaai/minimizaai-full.png",
+              src: "/assets/images/projects/minimizaai/minimizaai-full.png",
               alt: "Minimiza ai main image",
               full: false,
             }}
             terImage={{
-              src: "assets/images/projects/minimizaai/minimizaai-terc.png",
+              src: "/assets/images/projects/minimizaai/minimizaai-terc.png",
               alt: "Minimiza ai terc image",
               full: false,
             }}
             secImage={{
-              src: "assets/images/projects/minimizaai/minimizaai-sec.png",
+              src: "/assets/images/projects/minimizaai/minimizaai-sec.png",
               alt: "Minimiza ai sec image",
               full: false,
             }}

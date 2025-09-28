@@ -1,14 +1,14 @@
 /** @format */
 
-import Navbar from "../../components/navbar";
-import Footer from "../../components/footer";
+"use client";
 
 import BentoItem from "./components/bentoItem";
-import { useContext, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ThemeContext } from "../../routes/routes";
 import WaveformPlayer from "../../components/Wave";
+import Navbar from "../../components/navbar";
+import Footer from "../../components/footer";
 
 gsap.registerPlugin(ScrollTrigger);
 function Doodles() {
@@ -90,7 +90,8 @@ function Doodles() {
   }
   const chunks = toChunks(data, 4);
 
-  const { isDark } = useContext(ThemeContext);
+  //const { isDark } = useContext(ThemeContext);
+  const isDark = false;
 
   function renderItem(item: any, size: "large" | "medium" | "small") {
     if (item.type === "audio") {

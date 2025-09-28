@@ -3,7 +3,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { gsap } from "gsap";
-
+import Image from "next/image";
 interface CustomViewerProps {
   image: {
     src: string;

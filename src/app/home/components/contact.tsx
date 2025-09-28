@@ -3,6 +3,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { gsap } from "gsap";
+import Image from "next/image";
 
 interface ContactProps {
   closeContact: () => void;
@@ -44,7 +45,7 @@ export default function Contact({ closeContact, showContact }: ContactProps) {
       className="fixed  w-screen z-90 space-y-24 bg-white px-8 md:px-32 min-h-screen overflow-hidden flex flex-col items-center justify-around  top-0 left-0"
     >
       <div className="w-full flex justify-end">
-        <img
+        <Image
           alt="close"
           onClick={handleClose}
           className="hover:underline transition-all duration-200 font-medium  hover:text-orange-800"
@@ -53,7 +54,7 @@ export default function Contact({ closeContact, showContact }: ContactProps) {
       </div>
 
       <div className="flex flex-col gap-12 items-center justify-center max-w-[624px]">
-        <img
+        <Image
           src="/assets/images/me.png"
           className="w-[150px] h-auto"
           alt="artur"
@@ -117,15 +118,15 @@ export default function Contact({ closeContact, showContact }: ContactProps) {
 
       <div className="w-full flex max-md:px-12 justify-between  max-w-[624px]">
         <div className="flex flex-col items-center justify-center gap-1">
-          <img alt="mail" src="assets/icon/mail.svg" />
+          <Image alt="mail" src="assets/icon/mail.svg" />
           <span className="hidden md:block">arttturslv@gmail.com</span>
         </div>
         <div className="flex flex-col items-center justify-center gap-1">
-          <img alt="linkedin" src="assets/icon/linkedin.svg" />
+          <Image alt="linkedin" src="assets/icon/linkedin.svg" />
           <span className="hidden md:block">linkedin/in/arttturslv</span>
         </div>
         <div className="flex flex-col items-center justify-center gap-1">
-          <img alt="github" src="assets/icon/github.svg" />
+          <Image alt="github" src="assets/icon/github.svg" />
           <span className="hidden md:block">github/arttturslv</span>
         </div>
       </div>

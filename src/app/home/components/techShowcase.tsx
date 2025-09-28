@@ -1,19 +1,10 @@
 /** @format */
 
-import tailwindIcon from "/assets/images/techstack/tailwind.svg";
-import javascriptIcon from "/assets/images/techstack/js.svg";
-import typescriptIcon from "/assets/images/techstack/ts.svg";
-import reactIcon from "/assets/images/techstack/react.svg";
-import figmaIcon from "/assets/images/techstack/figma.svg";
-import expressIcon from "/assets/images/techstack/express.svg";
-import nodeIcon from "/assets/images/techstack/node.svg";
-
-import { ThemeContext } from "../../../routes/routes";
-import { useContext } from "react";
 import Tooltip from "../../../components/tooltip";
 
 export default function TechShowcase() {
-  const { isDark } = useContext(ThemeContext);
+  // const { isDark } = useContext(ThemeContext);
+  const isDark = false;
 
   return (
     <div className=" fade-element space-y-6  flex flex-col items-center">
@@ -27,7 +18,7 @@ export default function TechShowcase() {
           <span className="flex flex-col gap-1 items-center">
             <img
               loading="lazy"
-              src={javascriptIcon}
+              src={"/assets/images/techstack/js.svg"}
               className="w-14"
               alt="javascriptIcon"
             />
@@ -37,7 +28,7 @@ export default function TechShowcase() {
           <span className="flex flex-col gap-1 items-center">
             <img
               loading="lazy"
-              src={typescriptIcon}
+              src={"/assets/images/techstack/ts.svg"}
               className="w-14"
               alt="typescriptIcon"
             />
@@ -48,7 +39,7 @@ export default function TechShowcase() {
           <span className="flex flex-col gap-1 items-center">
             <img
               loading="lazy"
-              src={reactIcon}
+              src={"/assets/images/techstack/react.svg"}
               className="w-14"
               alt="reactIcon"
             />
@@ -59,7 +50,7 @@ export default function TechShowcase() {
           <span className="flex flex-col gap-1 items-center">
             <img
               loading="lazy"
-              src={nodeIcon}
+              src={"/assets/images/techstack/node.svg"}
               className="w-14"
               alt="nodeIcon"
             />
@@ -70,7 +61,7 @@ export default function TechShowcase() {
           <span className="flex flex-col gap-1 items-center">
             <img
               loading="lazy"
-              src={expressIcon}
+              src={"/assets/images/techstack/express.svg"}
               className="w-14"
               alt="expressIcon"
             />
@@ -81,7 +72,7 @@ export default function TechShowcase() {
           <span className="flex flex-col gap-1 items-center">
             <img
               loading="lazy"
-              src={tailwindIcon}
+              src={"/assets/images/techstack/tailwind.svg"}
               className="w-14"
               alt="tailwindIcon"
             />
@@ -92,7 +83,7 @@ export default function TechShowcase() {
           <span className="flex flex-col gap-1 items-center">
             <img
               loading="lazy"
-              src={figmaIcon}
+              src={"/assets/images/techstack/figma.svg"}
               className="w-14"
               alt="figmaIcon"
             />
