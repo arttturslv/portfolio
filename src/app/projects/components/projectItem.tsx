@@ -2,29 +2,23 @@
 
 import { useRef, useState } from "react";
 import Image from "next/image";
-interface image {
-  src: string;
-  alt: string;
-  full?: boolean;
-}
+
 interface ProjectItemProps {
-  mainImage: image;
-  secImage: image;
-  terImage: image;
+  _id: string;
   title: string;
-  stack: string[];
   description: string;
-  liveSrc: string | null;
-  githubSrc: string | null;
+  images: { src: string; alt: string }[];
+  techStack: string[];
+  websiteSrc?: string;
+  githubSrc?: string;
 }
+
 export default function ProjectItem({
-  mainImage,
+  images,
   description,
   githubSrc,
-  liveSrc,
-  secImage,
-  stack,
-  terImage,
+  websiteSrc,
+  techStack,
   title,
 }: ProjectItemProps) {
   const imgRef = useRef<HTMLImageElement | null>(null);
@@ -62,7 +56,7 @@ export default function ProjectItem({
                 setColor([r, g, b]);
               }}
               className="h-full w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
-              src={terImage.src}
+              src={images[1].src}
               alt={`showcase image 1 - ${title}`}
             />
           </div>
@@ -73,7 +67,7 @@ export default function ProjectItem({
             <Image
               fill
               className="h-full  object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
-              src={secImage.src}
+              src={images[2].src}
               alt={`showcase image 2 - ${title}`}
             />
           </div>
@@ -86,27 +80,27 @@ export default function ProjectItem({
             <Image
               fill
               className="h-full shadow-xl w-full object-top object-cover rounded-sm transition-transform duration-500 ease-in-out"
-              src={mainImage.src}
+              src={images[0].src}
               alt={`showcase image 3 - ${title}`}
             />
           </div>
           <div className="w-full group-hover:-bottom-22 duration-500 flex-col items-start transition-all ease-out absolute bottom-0 sm:h-22 h-26 px-8 py-4 flex  from-black/70 to-black/0 bg-linear-to-t">
             <h3 className="text-3xl font-extrabold text-white">{title}</h3>
-            <p className="text-white max-sm:text-sm ">{stack.join(", ")}</p>
+            <p className="text-white max-sm:text-sm ">{techStack.join(", ")}</p>
           </div>
         </div>
       </div>
       <div className="xl:p-0 px-4 fade-element">
         <p className="sm:text-2xl text-xl font-light ">{description}</p>
         <div className="flex flex-col">
-          {liveSrc && (
+          {websiteSrc && (
             <span className="sm:text-lg text-md">
               see here:{" "}
               <a
                 className="underline font-medium transition-all duration-200 hover:text-orange-800"
-                href={liveSrc}
+                href={websiteSrc}
               >
-                {liveSrc}
+                {websiteSrc}
               </a>
             </span>
           )}
