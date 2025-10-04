@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 interface ProjectItemProps {
   _id: string;
@@ -96,23 +97,25 @@ export default function ProjectItem({
           {websiteSrc && (
             <span className="sm:text-lg text-md">
               see here:{" "}
-              <a
+              <Link
+                target="_blank"
                 className="underline font-medium transition-all duration-200 hover:text-orange-800"
                 href={websiteSrc}
               >
                 {websiteSrc}
-              </a>
+              </Link>
             </span>
           )}
           {githubSrc && (
             <span className="sm:text-lg text-md">
               code here:{" "}
-              <a
+              <Link
+                target="_blank"
                 className="underline font-medium transition-all duration-200 hover:text-orange-800"
                 href={githubSrc}
               >
                 {githubSrc}
-              </a>
+              </Link>
             </span>
           )}
         </div>

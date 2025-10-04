@@ -1,103 +1,87 @@
 /** @format */
 
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 import TechShowcase from "./techShowcase";
 import Image from "next/image";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
   {
     name: "CONGRATS",
+    description:
+      "Plataforma focada na experiência de criação de mensagens customizadas para marcar momentos.",
+    techStack: ["React", "Node.js", "Express", "MongoDB"],
     image: "/assets/images/projects/congrats/congrats-full.png",
+    url: "/projects/#congrats",
   },
   {
     name: "POSTAAI",
+    techStack: ["React", "Node.js", "Express", "MongoDB"],
+    description:
+      "Aplicação de mural virtual colaborativo para compartilhamento de anotações, recados e desenhos.",
     image: "/assets/images/projects/postaai/postaai-full.png",
+    url: "/projects/#postaai",
   },
   {
     name: "MINIMIZAAI",
+    techStack: ["React", "Node.js", "Express", "MongoDB"],
+
+    description:
+      "Ferramenta simples para gerar, armazenar e compartilhar links curtos.",
     image: "/assets/images/projects/minimizaai/minimizaai-full.png",
+    url: "/projects/#minimizaai",
   },
 ];
 
 export default function Projects() {
-  const techRef = useRef<HTMLDivElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const imgRefs = useRef<HTMLDivElement[]>([]);
-
-  useEffect(() => {
-    if (!containerRef.current || !techRef.current) return;
-
-    const techBottom =
-      techRef.current.offsetTop + techRef.current.offsetHeight + 200;
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: `${techBottom}px top`,
-        end: () => `+=${projects.length * window.innerHeight}`,
-        scrub: true,
-        pin: false, // ❌ não fixa, deixa rolar normal
-      },
-    });
-
-    imgRefs.current.forEach((img, i) => {
-      if (!img) return;
-
-      tl.fromTo(
-        img,
-        { y: 100, opacity: 0 }, // entra de baixo
-        { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
-        i
-      );
-    });
-  }, []);
-
   return (
-    <section ref={containerRef} className="relative w-full my-48 space-y-48">
-      <div ref={techRef}>
+    <section className="relative w-full my-72 space-y-96">
+      <div>
         <TechShowcase />
       </div>
 
-      <div className="flex flex-col gap-48">
-        <div className="relative w-[600px] h-[300px] sm:w-full sm:h-[800px]">
-          <Image
-            src={projects[0].image}
-            alt={projects[0].name}
-            fill
-            className="object-cover  object-top shadow-lg"
-          />
-          <label className="absolute bottom-[-2rem] left-1/2 -translate-x-1/2 text-xl font-bold">
-            {projects[0].name}
-          </label>
-        </div>
+      <div className="flex flex-col gap-24 sm:gap-64">
+        {projects.map((project, index) => {
+          let isOdd = index % 2 !== 0;
 
-        <div className="relative w-[600px] h-[300px] sm:w-full sm:h-[800px]">
-          <Image
-            src={projects[1].image}
-            alt={projects[1].name}
-            fill
-            className="object-cover  object-top shadow-lg"
-          />
-          <label className="absolute bottom-[-2rem] left-1/2 -translate-x-1/2 text-xl font-bold">
-            {projects[1].name}
-          </label>
-        </div>
+          return (
+            <div
+              className={`flex max-lg:flex-col gap-4 sm:gap-8 ${
+                isOdd ? "flex-row-reverse" : "flex-row"
+              }`}
+            >
+              <Link
+                href={project.url}
+                className="cursor-pointer group relative w-full h-[250px] sm:h-[500px] bg-red-200"
+              >
+                {" "}
+                <Image
+                  src={project.image}
+                  alt={project.name}
+                  fill
+                  className="object-cover overflow-hidden  object-top shadow-lg  bg-red-400"
+                />
+                <div className="bg-gradient-to-t from-[#000]/70  flex items-center justify-end z-20 absolute bottom-0 w-full h-20 px-6">
+                  <div className="w-14 h-14 rounded-full bg-gradient-to-tl  transition-all duration-300 from-[#000]/30 group-hover:from-[#000]/50 flex items-center justify-center ">
+                    <img
+                      src="assets/icon/arrow-up-right.svg"
+                      className="size-8 invert-100 group-hover:invert-75 transition-all duration-200"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </Link>
 
-        <div className="relative w-[600px] h-[300px] sm:w-full sm:h-[800px]">
-          <Image
-            src={projects[2].image}
-            alt={projects[2].name}
-            fill
-            className="object-cover  object-top shadow-lg"
-          />
-          <label className="absolute bottom-[-2rem] left-1/2 -translate-x-1/2 text-xl font-bold">
-            {projects[2].name}
-          </label>
-        </div>
+              <div className="flex flex-col gap-1 lg:max-w-[35%]">
+                <label className="text-xl sm:text-2xl lg:text-3xl font-light">
+                  {project.description}
+                </label>
+                <label className="text-xs sm:text-lg font-light">
+                  {project.techStack.join(". ")}
+                </label>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </section>
   );
