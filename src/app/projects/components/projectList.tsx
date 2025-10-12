@@ -26,9 +26,11 @@ export default function ProjectsList({ projects }: { projects: Project[] }) {
     if (!containerRef.current) return;
 
     const ctx = gsap.context(() => {
-      gsap.utils.toArray(".fade-element").forEach((el: any) => {
+      gsap.utils.toArray(".fade-element").forEach((el) => {
+        const element = el as HTMLElement; // type assertion
+
         gsap.fromTo(
-          el,
+          element,
           { autoAlpha: 0, y: 50 },
           {
             autoAlpha: 1,
@@ -36,7 +38,7 @@ export default function ProjectsList({ projects }: { projects: Project[] }) {
             duration: 1,
             ease: "power3.out",
             scrollTrigger: {
-              trigger: el,
+              trigger: element,
               start: "top 80%", // quando entra na tela
               end: "bottom 20%", // quando sai da tela
               toggleActions: "play reverse play reverse",

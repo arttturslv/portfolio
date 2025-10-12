@@ -41,7 +41,7 @@ export default function Projects() {
 
       <div className="flex flex-col gap-24 sm:gap-64">
         {projects.map((project, index) => {
-          let isOdd = index % 2 !== 0;
+          const isOdd = index % 2 !== 0;
 
           return (
             <div

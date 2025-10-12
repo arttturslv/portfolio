@@ -2,7 +2,7 @@
 
 import { useContext } from "react";
 import Tooltip from "../../../components/tooltip";
-import { ThemeContext } from "../../layout";
+import { ThemeContext } from "../../themeContext";
 
 export default function TechShowcase() {
   const { isDark } = useContext(ThemeContext);

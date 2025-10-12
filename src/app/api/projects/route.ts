@@ -2,7 +2,7 @@
 
 import { NextResponse } from "next/server";
 import dbConnect from "../../../lib/mongodb";
-import Project from "../../../models/project";
+import Project, { IProject } from "../../../models/project";
 
 export async function GET(req: Request) {
   try {
@@ -38,13 +38,15 @@ export async function POST(req: Request) {
       );
     }
 
-    const project = await Project.create(body);
+    const project: Partial<IProject> = await Project.create(body);
 
     return NextResponse.json(project, { status: 201 });
-  } catch (error: any) {
+  } catch (error) {
+    const message =
+      error instanceof Error ? error.message : "Erro desconhecido";
     console.error("Erro ao criar projeto:", error);
     return NextResponse.json(
-      { error: "Erro ao criar projeto", details: error.message },
+      { error: "Erro ao criar projeto", details: message },
       { status: 500 }
     );
   }

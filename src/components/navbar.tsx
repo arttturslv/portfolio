@@ -3,7 +3,7 @@
 
 import React, { useContext } from "react";
 import Link from "next/link";
-import { ThemeContext } from "../app/layout";
+import { ThemeContext } from "../app/themeContext";
 
 function Navbar() {
   const { isDark, changeTheme } = useContext(ThemeContext);

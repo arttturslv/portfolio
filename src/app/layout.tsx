@@ -1,15 +1,11 @@
 /** @format */
 "use client";
 
-import React, { createContext } from "react";
+import React from "react";
 import PageTransition from "../components/pageTransition";
 import "../index.css";
 import Head from "next/head";
-
-export const ThemeContext = createContext({
-  isDark: false,
-  changeTheme: () => {},
-});
+import { ThemeContext } from "./themeContext";
 
 export default function RootLayout({
   children,

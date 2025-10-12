@@ -2,7 +2,7 @@
 
 import { NextResponse } from "next/server";
 import dbConnect from "../../../lib/mongodb";
-import GalleryItem from "../../../models/gallery-item";
+import GalleryItem, { IGalleryItem } from "../../../models/gallery-item";
 
 export async function GET(req: Request) {
   try {
@@ -27,7 +27,7 @@ export async function GET(req: Request) {
 export async function POST(req: Request) {
   try {
     await dbConnect();
-    const body = await req.json();
+    const body: Partial<IGalleryItem> = await req.json();
 
     if (!body.date || !body.type || !body.src || !body.name) {
       return NextResponse.json(
@@ -38,10 +38,12 @@ export async function POST(req: Request) {
 
     const item = await GalleryItem.create(body);
     return NextResponse.json(item, { status: 201 });
-  } catch (error: any) {
+  } catch (error) {
     console.error("Erro ao criar gallery item:", error);
+    const message =
+      error instanceof Error ? error.message : "Erro desconhecido";
     return NextResponse.json(
-      { error: "Erro ao criar gallery item", details: error.message },
+      { error: "Erro ao criar gallery item", details: message },
       { status: 500 }
     );
   }

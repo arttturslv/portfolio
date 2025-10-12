@@ -10,7 +10,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Contact from "./components/contact";
-import { ThemeContext } from "../layout";
+import { ThemeContext } from "../themeContext";
 
 gsap.registerPlugin(ScrollTrigger);
 function Home() {

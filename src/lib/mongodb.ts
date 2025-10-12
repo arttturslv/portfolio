@@ -9,10 +9,16 @@ interface MongooseCache {
   promise: Promise<Mongoose> | null;
 }
 
-let cached: MongooseCache = (global as any).mongoose;
+// Estendendo o global para incluir mongoose
+declare global {
+  // eslint-disable-next-line no-var
+  var mongoose: MongooseCache | undefined;
+}
 
-if (!cached) {
-  cached = (global as any).mongoose = { conn: null, promise: null };
+let cached: MongooseCache = global.mongoose ?? { conn: null, promise: null };
+
+if (!global.mongoose) {
+  global.mongoose = cached;
 }
 
 async function dbConnect(): Promise<Mongoose> {

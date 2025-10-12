@@ -10,22 +10,21 @@ interface PageTransitionProps {
 }
 
 export default function PageTransition({ children }: PageTransitionProps) {
-  const container = useRef(null);
+  const container = useRef<HTMLDivElement | null>(null); // tipagem segura
   const pathname = usePathname();
 
   useEffect(() => {
+    const el = container.current; // copia a ref para variável local
+    if (!el) return;
+
     gsap.fromTo(
-      container.current,
+      el,
       { opacity: 0 },
       { opacity: 1, duration: 0.6, ease: "power2.out" }
     );
 
     return () => {
-      gsap.to(container.current, {
-        opacity: 0,
-        duration: 0.4,
-        ease: "power2.in",
-      });
+      gsap.to(el, { opacity: 0, duration: 0.4, ease: "power2.in" });
     };
   }, [pathname]);
 
