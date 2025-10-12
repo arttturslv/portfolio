@@ -1,22 +1,42 @@
 /** @format */
-import "../index.css";
-import type { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Artttur",
-  description:
-    "Developer based in Belo Horizonte specializing in web development, front-end technologies, and creating interactive digital experiences. Passionate about technology, art, and innovative projects.",
-};
+import React, { createContext } from "react";
+import PageTransition from "../components/pageTransition";
+import "../index.css";
+import Head from "next/head";
+
+export const ThemeContext = createContext({
+  isDark: false,
+  changeTheme: () => {},
+});
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const [isDark, setIsDark] = React.useState(false);
+
+  const changeTheme = () => {
+    setIsDark(!isDark);
+  };
+
   return (
     <html lang="pt">
+      <Head>
+        <title>Artttur</title>
+        <meta
+          name="description"
+          content="Developer based in Belo Horizonte specializing in web development, front-end technologies, and creating interactive digital experiences. Passionate about technology, art, and innovative projects."
+        />
+      </Head>
       <body>
-        <div id="root">{children}</div>
+        <div id="root">
+          <ThemeContext.Provider value={{ isDark, changeTheme }}>
+            <PageTransition>{children}</PageTransition>
+          </ThemeContext.Provider>
+        </div>
       </body>
     </html>
   );

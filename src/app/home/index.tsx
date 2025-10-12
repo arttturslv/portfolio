@@ -6,15 +6,15 @@ import Footer from "../../components/footer";
 import Hero from "./components/hero";
 import Navbar from "../../components/navbar";
 import Projects from "./components/projects";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Contact from "./components/contact";
+import { ThemeContext } from "../layout";
 
 gsap.registerPlugin(ScrollTrigger);
 function Home() {
-  //const { isDark } = useContext(ThemeContext);
-  const isDark = false;
+  const { isDark } = useContext(ThemeContext);
 
   const [isContact, setContact] = useState(false);
 

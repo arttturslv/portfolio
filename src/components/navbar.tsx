@@ -1,13 +1,12 @@
 /** @format */
 "use client";
 
-import React from "react";
+import React, { useContext } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import { ThemeContext } from "../app/layout";
 
 function Navbar() {
-  // const { isDark, changeTheme } = useContext(ThemeContext);
-  const isDark = false;
+  const { isDark, changeTheme } = useContext(ThemeContext);
   const isActive = false;
 
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -120,7 +119,7 @@ function Navbar() {
             </div>
 
             <div
-              //onClick={changeTheme}
+              onClick={changeTheme}
               className=" invert  w-8  flex items-center justify-end cursor-pointer group"
             >
               <img

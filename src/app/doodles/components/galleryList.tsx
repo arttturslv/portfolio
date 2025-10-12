@@ -41,20 +41,26 @@ export default function GalleryList() {
   }, [galleryList]);
 
   return (
-    <div ref={containerRef} className="my-32 space-y-8 w-full">
-      <div className="grid grid-flow-dense gap-4 sm:grid-cols-2 lg:grid-cols-4 auto-rows-[12rem] lg:auto-rows-[18rem]">
-        {galleryList.map((item, i) => (
-          <BentoItem
-            key={item._id}
-            size={i === 0 ? "large" : i === 3 ? "medium" : "small"}
-            type={item.type}
-            src={item.src}
-            date={item.date}
-            title={item.name}
-            fluid
-          />
-        ))}
-      </div>
+    <div ref={containerRef} className="my-32 space-y-8 w-full ">
+      {!Array.isArray(galleryList) ? (
+        <div className="text-center w-full justify-center items-center ">
+          <label htmlFor=""> Sorry, there is nothing here</label>
+        </div>
+      ) : (
+        <div className="grid grid-flow-dense gap-4 sm:grid-cols-2 lg:grid-cols-4 auto-rows-[12rem] lg:auto-rows-[18rem]">
+          {galleryList.map((item, i) => (
+            <BentoItem
+              key={item._id}
+              size={i === 0 ? "large" : i === 3 ? "medium" : "small"}
+              type={item.type}
+              src={item.src}
+              date={item.date}
+              title={item.name}
+              fluid
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

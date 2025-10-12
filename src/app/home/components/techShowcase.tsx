@@ -1,10 +1,11 @@
 /** @format */
 
+import { useContext } from "react";
 import Tooltip from "../../../components/tooltip";
+import { ThemeContext } from "../../layout";
 
 export default function TechShowcase() {
-  // const { isDark } = useContext(ThemeContext);
-  const isDark = false;
+  const { isDark } = useContext(ThemeContext);
 
   return (
     <div className=" fade-element space-y-6  flex flex-col items-center">
