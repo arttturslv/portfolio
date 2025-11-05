@@ -1,22 +1,53 @@
 /** @format */
-
+"use client";
+import { useContext } from "react";
 import Navbar from "../../components/navbar";
-import ProjectsList from "./components/projectList";
+import ProjectsList, { Project } from "./components/projectList";
+import { ThemeContext } from "../themeContext";
+import React from "react";
 
-async function getProjects() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/projects`, {
-    cache: "no-store", // sempre pegar dados frescos
-  });
+// async function getProjects() {
+//   const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/projects`, {
+//     cache: "no-store", // sempre pegar dados frescos
+//   });
 
-  if (!res.ok) throw new Error("Erro ao buscar projetos");
-  return res.json();
-}
+//   if (!res.ok) throw new Error("Erro ao buscar projetos");
+//   return res.json();
+// }
 
-export default async function ProjectsPage() {
-  const projects = await getProjects();
+export default function ProjectsPage() {
+  //const projects = await getProjects();
+  const { isDark } = useContext(ThemeContext);
+
+  const [projects, setProjects] = React.useState<Project[]>([]);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState(null);
+
+  React.useEffect(() => {
+    async function fetchProjects() {
+      try {
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_SITE_URL}/api/projects`
+        );
+        if (!res.ok) throw new Error("Erro ao buscar projetos");
+        const data = await res.json();
+        setProjects(data);
+      } catch (err: any) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchProjects();
+  }, []);
 
   return (
-    <div className="w-full flex flex-col items-center justify-center bg-primary-light dark:bg-primary-dark text-primary-dark dark:text-primary-light">
+    <div
+      className={`${
+        isDark ? "dark" : "light"
+      } w-full flex flex-col items-center justify-center bg-primary-light dark:bg-primary-dark text-primary-dark dark:text-primary-light`}
+    >
       <Navbar />
 
       <div className="w-full max-w-[1400px] px-2 sm:px-12">
@@ -27,7 +58,13 @@ export default async function ProjectsPage() {
           </p>
         </section>
 
-        <ProjectsList projects={projects} />
+        {loading ? (
+          <p className="text-center">Loading projects...</p>
+        ) : error ? (
+          <p>Error: {error}</p>
+        ) : (
+          <ProjectsList projects={projects} />
+        )}
 
         <section className="my-48 flex justify-center">
           <h4 className="sm:text-xl text-2xl text-center">

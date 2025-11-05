@@ -1,7 +1,7 @@
 /** @format */
 
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import BentoItem from "./bentoItem";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -18,13 +18,20 @@ interface GalleryItem {
 
 export default function GalleryList() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [galleryList, setGalleryList] = useState<GalleryItem[]>([]);
+  const [galleryList, setGalleryList] = React.useState<GalleryItem[]>([]);
+  const [loading, setLoading] = React.useState<boolean>(true);
+  const [error, setError] = React.useState<string | null>(null);
 
   useEffect(() => {
+    setLoading(true);
     fetch("/api/gallery")
-      .then((res) => res.json())
-      .then((data) => setGalleryList(data))
-      .catch(console.error);
+      .then((res) => {
+        if (!res.ok) throw new Error("Erro ao buscar galeria");
+        return res.json();
+      })
+      .then((data: GalleryItem[]) => setGalleryList(data))
+      .catch((err: any) => setError(err.message))
+      .finally(() => setLoading(false));
   }, []);
 
   // GSAP depois que os items aparecem no DOM
@@ -47,19 +54,28 @@ export default function GalleryList() {
           <label htmlFor=""> Sorry, there is nothing here</label>
         </div>
       ) : (
-        <div className="grid grid-flow-dense gap-4 sm:grid-cols-2 lg:grid-cols-4 auto-rows-[12rem] lg:auto-rows-[18rem]">
-          {galleryList.map((item, i) => (
-            <BentoItem
-              key={item._id}
-              size={i === 0 ? "large" : i === 3 ? "medium" : "small"}
-              type={item.type}
-              src={item.src}
-              date={item.date}
-              title={item.name}
-              fluid
-            />
-          ))}
-        </div>
+        <>
+          {" "}
+          {loading ? (
+            <p className="text-center">Loading projects...</p>
+          ) : error ? (
+            <p>Error: {error}</p>
+          ) : (
+            <div className="grid grid-flow-dense gap-4 sm:grid-cols-2 lg:grid-cols-4 auto-rows-[12rem] lg:auto-rows-[18rem]">
+              {galleryList.map((item, i) => (
+                <BentoItem
+                  key={item._id}
+                  size={i === 0 ? "large" : i === 3 ? "medium" : "small"}
+                  type={item.type}
+                  src={item.src}
+                  date={item.date}
+                  title={item.name}
+                  fluid
+                />
+              ))}
+            </div>
+          )}
+        </>
       )}
     </div>
   );

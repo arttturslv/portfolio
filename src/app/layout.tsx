@@ -7,6 +7,7 @@ import "../index.css";
 import Head from "next/head";
 import { ThemeContext } from "./themeContext";
 import Script from "next/script";
+import CustomCursor from "../components/customCursor";
 
 export default function RootLayout({
   children,
@@ -62,6 +63,7 @@ export default function RootLayout({
         <div id="root">
           <ThemeContext.Provider value={{ isDark, changeTheme }}>
             <PageTransition>{children}</PageTransition>
+            <CustomCursor></CustomCursor>
           </ThemeContext.Provider>
         </div>
       </body>
