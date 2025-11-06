@@ -21,7 +21,7 @@ export default function ProjectsPage() {
 
   const [projects, setProjects] = React.useState<Project[]>([]);
   const [loading, setLoading] = React.useState(true);
-  const [error, setError] = React.useState(null);
+  const [error, setError] = React.useState<string | null>(null);
 
   React.useEffect(() => {
     async function fetchProjects() {
@@ -32,8 +32,12 @@ export default function ProjectsPage() {
         if (!res.ok) throw new Error("Erro ao buscar projetos");
         const data = await res.json();
         setProjects(data);
-      } catch (err: any) {
-        setError(err.message);
+      } catch (err: unknown) {
+         if (err instanceof Error) {
+    setError(err.message);
+  } else {
+    setError("An unexpected error occurred");
+  }
       } finally {
         setLoading(false);
       }
