@@ -47,7 +47,7 @@ export default function Contact({ closeContact, showContact }: ContactProps) {
         <img
           alt="close"
           onClick={handleClose}
-          className="hover:underline transition-all duration-200 font-medium  hover:text-orange-800"
+          className="hover:underline transition-all duration-200 font-medium  hyperlink"
           src="assets/icon/x.svg"
         />
       </div>

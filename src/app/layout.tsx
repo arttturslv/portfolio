@@ -7,17 +7,30 @@ import "../index.css";
 import Head from "next/head";
 import { ThemeContext } from "./themeContext";
 import Script from "next/script";
-import CustomCursor from "../components/customCursor";
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+
+  React.useEffect(() => {
+    const theme = localStorage.getItem("theme")
+    setIsDark(theme === "dark" ? true : false)
+  }, [])
   const [isDark, setIsDark] = React.useState(false);
 
   const changeTheme = () => {
-    setIsDark(!isDark);
+    setIsDark((prev) => {
+
+      if (prev === true) {
+        localStorage.setItem("theme", "light")
+        return false;
+      } else {
+        localStorage.setItem("theme", "dark")
+        return true;
+      }
+    });
   };
 
   return (
@@ -63,7 +76,6 @@ export default function RootLayout({
         <div id="root">
           <ThemeContext.Provider value={{ isDark, changeTheme }}>
             <PageTransition>{children}</PageTransition>
-            <CustomCursor></CustomCursor>
           </ThemeContext.Provider>
         </div>
       </body>

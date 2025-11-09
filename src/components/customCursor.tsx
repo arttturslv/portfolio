@@ -69,7 +69,7 @@ export default function CustomCursor() {
 
   return (
     <div
-      className="transition-all duration-[50ms] border-1 border-orange-800"
+      className="transition-all duration-75 border-1 border-orange-800"
       ref={cursorRef}
     ></div>
   );

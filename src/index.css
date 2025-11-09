@@ -30,3 +30,12 @@
 :root {
   scroll-behavior: smooth;
 }
+
+@layer components {
+  .hyperlink {
+    @apply hover:text-orange-800 dark:hover:text-orange-600;
+  }
+  .facss {
+    @apply dark:text-green-600 text-green-950;
+  }
+}

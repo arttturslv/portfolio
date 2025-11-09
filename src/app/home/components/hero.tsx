@@ -10,7 +10,7 @@ export default function Hero() {
           <h1 className="font-khan font-extrabold text-9xl max-sm:text-8xl">
             Art
           </h1>
-          <h1 className="font-khan font-extrabold text-9xl max-sm:text-8xl overflow-hidden max-w-0 group-hover:max-w-[5.4rem] transition-all duration-200 ease-out">
+          <h1 className="font-khan font-extrabold delay-150 text-9xl max-sm:text-8xl overflow-hidden max-w-0 group-hover:max-w-[5.4rem] transition-all duration-200 ease-out">
             {" "}
             tt
           </h1>

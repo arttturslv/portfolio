@@ -12,7 +12,7 @@ export default function Footer() {
               developer |{" "}
               <Link
                 href="/doodles"
-                className="hover:underline transition-all duration-200 hover:text-orange-800"
+                className="hover:underline transition-all duration-200 hyperlink"
               >
                 self-proclaimed artist
               </Link>{" "}
@@ -25,7 +25,7 @@ export default function Footer() {
               <a
                 href="https://github.com/arttturslv"
                 target="_blank"
-                className="hover:underline transition-all duration-200 hover:text-orange-800"
+                className="hover:underline transition-all duration-200 hyperlink"
               >
                 github
               </a>
@@ -33,7 +33,7 @@ export default function Footer() {
               <a
                 href="https://www.linkedin.com/in/arttturslv/"
                 target="_blank"
-                className="hover:underline transition-all duration-200 hover:text-orange-800"
+                className="hover:underline transition-all duration-200 hyperlink"
               >
                 linkedin
               </a>
@@ -41,7 +41,7 @@ export default function Footer() {
               <a
                 href="https://www.instagram.com/artur.pine"
                 target="_blank"
-                className="hover:underline transition-all duration-200 hover:text-orange-800"
+                className="hover:underline transition-all duration-200 hyperlink"
               >
                 instagram
               </a>

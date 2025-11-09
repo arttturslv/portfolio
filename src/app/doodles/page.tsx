@@ -11,13 +11,12 @@ export default function DoodlesPage() {
 
   return (
     <div
-      className={`${
-        isDark ? "dark" : "light"
-      } w-full flex flex-col items-center justify-center bg-primary-light dark:bg-primary-dark text-primary-dark dark:text-primary-light`}
+      className={`${isDark ? "dark" : "light"
+        } w-full flex flex-col items-center justify-center bg-primary-light dark:bg-primary-dark text-primary-dark dark:text-primary-light min-h-screen`}
     >
       <Navbar />
 
-      <div className="w-full max-w-[1400px] px-2 sm:px-12">
+      <div className="w-full max-w-[1400px] px-2 sm:px-12 flex-1">
         <section className="text-center my-36">
           <h1 className="text-6xl sm:text-8xl font-bold font-khan fade-element">
             Gallery

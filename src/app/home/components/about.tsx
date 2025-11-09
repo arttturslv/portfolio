@@ -134,7 +134,7 @@ export default function About({ openContact }: AboutProps) {
             <Link
               target="_blank"
               href="https://www.linkedin.com/company/facss-io/"
-              className=" hover:underline transition-all duration-200 font-medium text-green-950 hover:text-orange-800"
+              className=" hover:underline transition-all duration-200 font-medium facss hyperlink "
             >
               @FACSS
             </Link>
@@ -147,7 +147,7 @@ export default function About({ openContact }: AboutProps) {
 
           <button
             onClick={openContact}
-            className="underline cursor-pointer p-0 m-0 bg-transparent border-none transition-all duration-200 hover:text-orange-800"
+            className="underline cursor-pointer p-0 m-0 bg-transparent border-none transition-all duration-200 hyperlink"
           >
             talk to me
           </button>

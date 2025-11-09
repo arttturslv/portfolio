@@ -99,7 +99,7 @@ export default function ProjectItem({
               see here:{" "}
               <Link
                 target="_blank"
-                className="underline font-medium transition-all duration-200 hover:text-orange-800"
+                className="underline font-medium transition-all duration-200 hyperlink"
                 href={websiteSrc}
               >
                 {websiteSrc}
@@ -111,7 +111,7 @@ export default function ProjectItem({
               code here:{" "}
               <Link
                 target="_blank"
-                className="underline font-medium transition-all duration-200 hover:text-orange-800"
+                className="underline font-medium transition-all duration-200 hyperlink"
                 href={githubSrc}
               >
                 {githubSrc}
