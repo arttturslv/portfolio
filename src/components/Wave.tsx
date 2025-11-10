@@ -10,7 +10,7 @@ const WaveformPlayer: React.FC<{ audioUrl: string }> = ({ audioUrl }) => {
 
   useEffect(() => {
     if (waveformRef.current) {
-      wavesurferRef.current = WaveSurfer.create({
+      const audio = WaveSurfer.create({
         container: waveformRef.current,
         waveColor: "#2F2F2F", // cor da onda
         progressColor: "#EF6C00", // cor da parte já tocada
@@ -22,13 +22,26 @@ const WaveformPlayer: React.FC<{ audioUrl: string }> = ({ audioUrl }) => {
         normalize: true, // normaliza amplitude
       });
 
-      wavesurferRef.current.load(audioUrl);
+      audio.load(audioUrl);
+      audio.on('finish', function () {
+        console.log('Audio playback has finished!');
+        setIsPlaying(false)
+        audio.stop()
+      });
+
+      wavesurferRef.current = audio;
 
       return () => {
+        wavesurferRef.current?.unAll();
         wavesurferRef.current?.destroy();
+        wavesurferRef.current = null;
       };
+
     }
+
   }, [audioUrl]);
+
+
 
   const togglePlay = () => {
     if (wavesurferRef.current) {

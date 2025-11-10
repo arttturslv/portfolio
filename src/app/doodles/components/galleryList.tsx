@@ -31,12 +31,12 @@ export default function GalleryList() {
       })
       .then((data: GalleryItem[]) => setGalleryList(data))
       .catch((err: unknown) => {
-                 if (err instanceof Error) {
+        if (err instanceof Error) {
 
-        setError(err.message)
+          setError(err.message)
         } else {
-    setError("An unexpected error occurred");
-  }
+          setError("An unexpected error occurred");
+        }
       })
       .finally(() => setLoading(false));
   }, []);
@@ -64,7 +64,7 @@ export default function GalleryList() {
         <>
           {" "}
           {loading ? (
-            <p className="text-center">Loading projects...</p>
+            <p className="text-center">Loading gallery...</p>
           ) : error ? (
             <p>Error: {error}</p>
           ) : (

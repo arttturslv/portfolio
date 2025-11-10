@@ -45,9 +45,9 @@ export default function Projects() {
 
           return (
             <div
-              className={`flex max-lg:flex-col gap-4 sm:gap-8 ${
-                isOdd ? "flex-row-reverse" : "flex-row"
-              }`}
+              id={project.name}
+              className={`flex max-lg:flex-col gap-4 sm:gap-8 ${isOdd ? "flex-row-reverse" : "flex-row"
+                }`}
             >
               <Link
                 href={project.url}
