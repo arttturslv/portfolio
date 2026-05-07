@@ -145,12 +145,11 @@ export default function About({ openContact }: AboutProps) {
             technology & the potential of our species.
           </p>
 
-          <button
-            onClick={openContact}
+          <a href="mailto:arttturslv@gmail.com"
             className="underline cursor-pointer p-0 m-0 bg-transparent border-none transition-all duration-200 hyperlink"
           >
             talk to me
-          </button>
+          </a>
         </div>
       </div>
     </section>
