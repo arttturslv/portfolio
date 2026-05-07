@@ -11,6 +11,8 @@ export default function About({ openContact }: AboutProps) {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const tl = React.useRef<gsap.core.Timeline>(null);
 
+  console.log(openContact)
+
   useLayoutEffect(() => {
     if (!containerRef.current) return;
 
