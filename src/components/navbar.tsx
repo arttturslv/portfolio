@@ -107,11 +107,11 @@ function Navbar() {
             </Link>
           </div>
 
-          <div className="flex justify-end items-center gap-3">
+          <div className="flex justify-end items-center gap-2">
             <LanguageSwitcher />
             <div
               onClick={toggleMenu}
-              className=" sm:hidden w-8  flex items-center justify-end cursor-pointer group"
+              className=" sm:hidden w-6  flex items-center justify-end cursor-pointer group"
             >
               <img
                 className={`${
@@ -124,7 +124,7 @@ function Navbar() {
 
             <div
               onClick={changeTheme}
-              className=" invert  w-8  flex items-center justify-end cursor-pointer group"
+              className=" invert  w-6  flex items-center justify-end cursor-pointer group"
             >
               <img
                 alt="change theme"

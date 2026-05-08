@@ -19,7 +19,7 @@ export default function LanguageSwitcher() {
         <button
           type="button"
           onClick={() => setLocale("pt-BR")}
-          className={`w-8 py-1 text-sm rounded transition-all duration-200  text-black dark:bg-white/10 dark:text-white
+          className={`w-8 py-1 text-sm rounded transition-all duration-200  text-black  dark:text-white
           `}
         >
           pt-br
@@ -28,7 +28,7 @@ export default function LanguageSwitcher() {
         <button
           type="button"
           onClick={() => setLocale("en")}
-          className={`w-8 py-1 text-sm rounded transition-all duration-200  text-black dark:bg-white/10 dark:text-white
+          className={`w-8 py-1 text-sm rounded transition-all duration-200  text-black  dark:text-white
           `}
         >
           en
