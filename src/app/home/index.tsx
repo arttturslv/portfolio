@@ -57,9 +57,7 @@ function Home() {
       <div className="w-full max-w-[1400px] px-2 sm:px-12  ">
         <Hero />
         <About openContact={openContact} />
-
         <Projects></Projects>
-
         <Cite></Cite>
       </div>
       <Footer></Footer>

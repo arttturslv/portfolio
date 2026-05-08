@@ -11,8 +11,9 @@ export default function DoodlesPage() {
 
   return (
     <div
-      className={`${isDark ? "dark" : "light"
-        } w-full flex flex-col items-center justify-center bg-primary-light dark:bg-primary-dark text-primary-dark dark:text-primary-light min-h-screen`}
+      className={`${
+        isDark ? "dark" : "light"
+      } w-full flex flex-col items-center justify-center bg-primary-light dark:bg-primary-dark text-primary-dark dark:text-primary-light min-h-screen`}
     >
       <Navbar />
 
@@ -22,12 +23,9 @@ export default function DoodlesPage() {
             Gallery
           </h1>
           <p className="max-w-[60%] text-lg sm:text-xl font-light mx-auto fade-element">
-            Semi-confidential space. A collection of my solified thoughts
+            Semi-confidential space. A bit of everything.
           </p>
         </section>
-
-        {/* Client-side Gallery */}
-
         <GalleryList />
       </div>
 

@@ -11,13 +11,11 @@ export default function About({ openContact }: AboutProps) {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const tl = React.useRef<gsap.core.Timeline>(null);
 
-  console.log(openContact)
-
   useLayoutEffect(() => {
     if (!containerRef.current) return;
 
     const eu = containerRef.current.querySelector(
-      "img.main"
+      "img.main",
     ) as HTMLImageElement;
     const hiddenImgs =
       containerRef.current.querySelectorAll<HTMLImageElement>(".hidden-img");
@@ -51,7 +49,7 @@ export default function About({ openContact }: AboutProps) {
           duration: 0.8,
           ease: "back.out(1.7)",
         },
-        i * 0.2 // stagger manual
+        i * 0.2, // stagger manual
       );
     });
 
@@ -147,7 +145,8 @@ export default function About({ openContact }: AboutProps) {
             technology & the potential of our species.
           </p>
 
-          <a href="mailto:arttturslv@gmail.com"
+          <a
+            onClick={openContact}
             className="underline cursor-pointer p-0 m-0 bg-transparent border-none transition-all duration-200 hyperlink"
           >
             talk to me

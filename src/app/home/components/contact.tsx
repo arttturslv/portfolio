@@ -1,15 +1,41 @@
 /** @format */
 
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { gsap } from "gsap";
+import { sendContactAction } from "../../../actions/contact-me";
+import { toast } from "sonner";
 
 interface ContactProps {
   closeContact: () => void;
   showContact: boolean;
 }
+
+interface InputValidation {
+  regex: RegExp;
+  message: string;
+}
+
+export const NAME_VALIDATION: InputValidation = {
+  regex: /^[A-Za-zÀ-ÖØ-öø-ÿ\s]{2,}$/,
+  message: "Digite um nome válido*",
+};
+
+export const EMAIL_VALIDATION: InputValidation = {
+  regex: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+  message: "Digite um e-mail válido*",
+};
+
 export default function Contact({ closeContact, showContact }: ContactProps) {
   const overlayRef = React.useRef<HTMLDivElement>(null);
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [nameError, setNameError] = useState<string | null>(null);
+  const [emailError, setEmailError] = useState<string | null>(null);
+
+  const [loading, setLoading] = useState(false);
 
   React.useEffect(() => {
     if (showContact) {
@@ -18,7 +44,7 @@ export default function Contact({ closeContact, showContact }: ContactProps) {
       gsap.fromTo(
         overlayRef.current,
         { opacity: 0, left: 700 },
-        { opacity: 1, duration: 0.3, left: 0 }
+        { opacity: 1, duration: 0.3, left: 0 },
       );
     }
   }, [showContact]);
@@ -36,6 +62,56 @@ export default function Contact({ closeContact, showContact }: ContactProps) {
       left: 700,
       onComplete: closeContact,
     });
+  };
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    validation: InputValidation,
+    set: React.Dispatch<React.SetStateAction<string>>,
+    setError: React.Dispatch<React.SetStateAction<string | null>>,
+  ) => {
+    const value = e.currentTarget.value;
+    set(value);
+
+    if (value.length === 0) {
+      setError(null);
+      return;
+    }
+
+    if (!validation.regex.test(value)) {
+      setError(validation.message);
+    } else {
+      setError(null);
+    }
+  };
+
+  const sendEmail = async () => {
+    if (!name || !email || !subject) {
+      toast.error("Por favor, preencha todos os campos.");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const { success } = await sendContactAction({
+        senderEmail: email,
+        senderName: name,
+        subject,
+      });
+
+      if (success) {
+        toast.success("E-mail enviado com sucesso!");
+        handleClose();
+      } else {
+        toast.error("Erro desconhecido ao enviar e-mail.");
+      }
+      console.log(success);
+    } catch (error) {
+      toast.error("Erro ao enviar e-mail.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return ReactDOM.createPortal(
@@ -70,7 +146,18 @@ export default function Contact({ closeContact, showContact }: ContactProps) {
                 className="border-b-[2px] p-0 md:pt-2 focus:outline-0  placeholder:text-xl md:placeholder:text-4xl text-xl md:text-4xl border-gray-800 w-full"
                 placeholder="{seu nome}"
                 type="text"
+                value={name}
+                maxLength={32}
+                onChange={(e) =>
+                  handleChange(e, NAME_VALIDATION, setName, setNameError)
+                }
               />
+              <p
+                role="alert"
+                className="h-1 text-sm text-red-500 font-medium text-end"
+              >
+                {nameError}
+              </p>
             </div>
 
             <div>
@@ -85,7 +172,17 @@ export default function Contact({ closeContact, showContact }: ContactProps) {
                 className="border-b-[2px] p-0 md:pt-2 focus:outline-0  placeholder:text-xl md:placeholder:text-4xl text-xl md:text-4xl border-gray-800 w-full"
                 placeholder="{seu e-mail}"
                 type="email"
+                value={email}
+                onChange={(e) =>
+                  handleChange(e, EMAIL_VALIDATION, setEmail, setEmailError)
+                }
               />
+              <p
+                role="alert"
+                className="h-1 text-sm text-red-500 font-medium text-end"
+              >
+                {emailError}
+              </p>
             </div>
 
             <div>
@@ -100,16 +197,19 @@ export default function Contact({ closeContact, showContact }: ContactProps) {
                 className="border-b-[2px] p-0 md:pt-2 focus:outline-0  placeholder:text-xl md:placeholder:text-4xl text-xl md:text-4xl border-gray-800 w-full"
                 placeholder="{seu assunto}"
                 type="text"
+                value={subject}
+                onChange={(e) => setSubject(e.currentTarget.value)}
               />
             </div>
           </div>
 
           <div className="w-full flex justify-end ">
             <button
-              className="px-12 sm:px-24 h-[42px] md:h-[52px] cursor-pointer font-extralight bg-black/80 text-xl md:text-3xl text-white"
-              type="submit"
+              className={`px-12 sm:px-24 h-[42px] md:h-[52px] cursor-pointer font-extralight bg-black/80 text-xl md:text-3xl text-white ${loading ? "animate-pulse" : ""}`}
+              type="button"
+              onClick={sendEmail}
             >
-              Enviar
+              {!loading ? "Enviar" : "Enviando..."}
             </button>
           </div>
         </form>
@@ -130,6 +230,6 @@ export default function Contact({ closeContact, showContact }: ContactProps) {
         </div>
       </div>
     </div>,
-    document.getElementById("root") as HTMLElement
+    document.getElementById("root") as HTMLElement,
   );
 }

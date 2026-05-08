@@ -7,27 +7,27 @@ import "../index.css";
 import Head from "next/head";
 import { ThemeContext } from "./themeContext";
 import Script from "next/script";
+import { Toaster } from "sonner";
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const [isDark, setIsDark] = React.useState(false);
 
   React.useEffect(() => {
-    const theme = localStorage.getItem("theme")
-    setIsDark(theme === "dark" ? true : false)
-  }, [])
-  const [isDark, setIsDark] = React.useState(false);
+    const theme = localStorage.getItem("theme");
+    setIsDark(theme === "dark" ? true : false);
+  }, []);
 
   const changeTheme = () => {
     setIsDark((prev) => {
-
       if (prev === true) {
-        localStorage.setItem("theme", "light")
+        localStorage.setItem("theme", "light");
         return false;
       } else {
-        localStorage.setItem("theme", "dark")
+        localStorage.setItem("theme", "dark");
         return true;
       }
     });
@@ -76,6 +76,7 @@ export default function RootLayout({
         <div id="root">
           <ThemeContext.Provider value={{ isDark, changeTheme }}>
             <PageTransition>{children}</PageTransition>
+            <Toaster richColors />
           </ThemeContext.Provider>
         </div>
       </body>
