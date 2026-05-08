@@ -1,15 +1,43 @@
 /** @format */
 
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { gsap } from "gsap";
+import { useTranslation } from "react-i18next";
+import { sendContactAction } from "../../../actions/contact-me";
+import { toast } from "sonner";
 
 interface ContactProps {
   closeContact: () => void;
   showContact: boolean;
 }
+
+interface InputValidation {
+  regex: RegExp;
+  message: string;
+}
+
 export default function Contact({ closeContact, showContact }: ContactProps) {
+  const { t } = useTranslation();
+
+  const NAME_VALIDATION: InputValidation = {
+    regex: /^[A-Za-zÀ-ÖØ-öø-ÿ\s]{2,}$/,
+    message: t("contact.nameInvalid"),
+  };
+
+  const EMAIL_VALIDATION: InputValidation = {
+    regex: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+    message: t("contact.emailInvalid"),
+  };
   const overlayRef = React.useRef<HTMLDivElement>(null);
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [nameError, setNameError] = useState<string | null>(null);
+  const [emailError, setEmailError] = useState<string | null>(null);
+
+  const [loading, setLoading] = useState(false);
 
   React.useEffect(() => {
     if (showContact) {
@@ -18,7 +46,7 @@ export default function Contact({ closeContact, showContact }: ContactProps) {
       gsap.fromTo(
         overlayRef.current,
         { opacity: 0, left: 700 },
-        { opacity: 1, duration: 0.3, left: 0 }
+        { opacity: 1, duration: 0.3, left: 0 },
       );
     }
   }, [showContact]);
@@ -36,6 +64,56 @@ export default function Contact({ closeContact, showContact }: ContactProps) {
       left: 700,
       onComplete: closeContact,
     });
+  };
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    validation: InputValidation,
+    set: React.Dispatch<React.SetStateAction<string>>,
+    setError: React.Dispatch<React.SetStateAction<string | null>>,
+  ) => {
+    const value = e.currentTarget.value;
+    set(value);
+
+    if (value.length === 0) {
+      setError(null);
+      return;
+    }
+
+    if (!validation.regex.test(value)) {
+      setError(validation.message);
+    } else {
+      setError(null);
+    }
+  };
+
+  const sendEmail = async () => {
+    if (!name || !email || !subject) {
+      toast.error(t("contact.fillFields"));
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const { success } = await sendContactAction({
+        senderEmail: email,
+        senderName: name,
+        subject,
+      });
+
+      if (success) {
+        toast.success(t("contact.sentSuccess"));
+        handleClose();
+      } else {
+        toast.error(t("contact.unknownError"));
+      }
+      console.log(success);
+    } catch {
+      toast.error(t("contact.sendError"));
+    } finally {
+      setLoading(false);
+    }
   };
 
   return ReactDOM.createPortal(
@@ -63,14 +141,25 @@ export default function Contact({ closeContact, showContact }: ContactProps) {
           <div className="space-y-3">
             <div>
               <label htmlFor="name" className="text-md md:text-md font-light  ">
-                Como posso te chamar?
+                {t("contact.nameLabel")}
               </label>
               <input
                 name="name"
                 className="border-b-[2px] p-0 md:pt-2 focus:outline-0  placeholder:text-xl md:placeholder:text-4xl text-xl md:text-4xl border-gray-800 w-full"
-                placeholder="{seu nome}"
+                placeholder={t("contact.namePlaceholder")}
                 type="text"
+                value={name}
+                maxLength={32}
+                onChange={(e) =>
+                  handleChange(e, NAME_VALIDATION, setName, setNameError)
+                }
               />
+              <p
+                role="alert"
+                className="h-1 text-sm text-red-500 font-medium text-end"
+              >
+                {nameError}
+              </p>
             </div>
 
             <div>
@@ -78,14 +167,24 @@ export default function Contact({ closeContact, showContact }: ContactProps) {
                 htmlFor="email"
                 className="text-md md:text-md font-light  "
               >
-                Qual seu correio eletrônico mais usado?
+                {t("contact.emailLabel")}
               </label>
               <input
                 name="email"
                 className="border-b-[2px] p-0 md:pt-2 focus:outline-0  placeholder:text-xl md:placeholder:text-4xl text-xl md:text-4xl border-gray-800 w-full"
-                placeholder="{seu e-mail}"
+                placeholder={t("contact.emailPlaceholder")}
                 type="email"
+                value={email}
+                onChange={(e) =>
+                  handleChange(e, EMAIL_VALIDATION, setEmail, setEmailError)
+                }
               />
+              <p
+                role="alert"
+                className="h-1 text-sm text-red-500 font-medium text-end"
+              >
+                {emailError}
+              </p>
             </div>
 
             <div>
@@ -93,23 +192,26 @@ export default function Contact({ closeContact, showContact }: ContactProps) {
                 htmlFor="subject"
                 className="text-md md:text-md font-light  "
               >
-                Qual assunto?
+                {t("contact.subjectLabel")}
               </label>
               <input
                 name="subject"
                 className="border-b-[2px] p-0 md:pt-2 focus:outline-0  placeholder:text-xl md:placeholder:text-4xl text-xl md:text-4xl border-gray-800 w-full"
-                placeholder="{seu assunto}"
+                placeholder={t("contact.subjectPlaceholder")}
                 type="text"
+                value={subject}
+                onChange={(e) => setSubject(e.currentTarget.value)}
               />
             </div>
           </div>
 
           <div className="w-full flex justify-end ">
             <button
-              className="px-12 sm:px-24 h-[42px] md:h-[52px] cursor-pointer font-extralight bg-black/80 text-xl md:text-3xl text-white"
-              type="submit"
+              className={`px-12 sm:px-24 h-[42px] md:h-[52px] cursor-pointer font-extralight bg-black/80 text-xl md:text-3xl text-white ${loading ? "animate-pulse" : ""}`}
+              type="button"
+              onClick={sendEmail}
             >
-              Enviar
+              {!loading ? t("contact.send") : t("contact.sending")}
             </button>
           </div>
         </form>
@@ -130,6 +232,6 @@ export default function Contact({ closeContact, showContact }: ContactProps) {
         </div>
       </div>
     </div>,
-    document.getElementById("root") as HTMLElement
+    document.getElementById("root") as HTMLElement,
   );
 }

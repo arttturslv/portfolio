@@ -3,10 +3,13 @@
 
 import React, { useContext } from "react";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 import { ThemeContext } from "../app/themeContext";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 function Navbar() {
   const { isDark, changeTheme } = useContext(ThemeContext);
+  const { t } = useTranslation();
   const isActive = false;
 
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -38,7 +41,7 @@ function Navbar() {
                 : "gap-12 flex justify-center hover:underline "
             }
           >
-            home
+            {t("menu.home")}
           </Link>
 
           <Link
@@ -49,7 +52,7 @@ function Navbar() {
                 : "gap-12 flex justify-center hover:underline "
             }
           >
-            projects
+            {t("menu.projects")}
           </Link>
 
           <Link
@@ -60,14 +63,15 @@ function Navbar() {
                 : "gap-12 flex justify-center hover:underline "
             }
           >
-            gallery
+            {t("menu.gallery")}
           </Link>
         </div>
 
         <div className="max-sm:w-full ">
           <div
-            className={` ${!isMenuOpen ? " -top-26" : "top-8 "
-              } w-screen absolute flex flex-col px-16 items-end gap-2 py-1 mt-1 left-0  transition-all duration-300 ease-in-out `}
+            className={` ${
+              !isMenuOpen ? " -top-26" : "top-8 "
+            } w-screen absolute flex flex-col px-16 items-end gap-2 py-1 mt-1 left-0  transition-all duration-300 ease-in-out `}
           >
             <Link
               href="/"
@@ -77,7 +81,7 @@ function Navbar() {
                   : " gap-12 flex justify-center hover:underline"
               }
             >
-              home
+              {t("menu.home")}
             </Link>
 
             <Link
@@ -88,7 +92,7 @@ function Navbar() {
                   : " gap-12 flex justify-center hover:underline"
               }
             >
-              projects
+              {t("menu.projects")}
             </Link>
 
             <Link
@@ -99,18 +103,20 @@ function Navbar() {
                   : " gap-12 flex justify-center hover:underline"
               }
             >
-              gallery
+              {t("menu.gallery")}
             </Link>
           </div>
 
-          <div className="flex justify-end">
+          <div className="flex justify-end items-center gap-2">
+            <LanguageSwitcher />
             <div
               onClick={toggleMenu}
-              className=" sm:hidden w-8  flex items-center justify-end cursor-pointer group"
+              className=" sm:hidden w-6  flex items-center justify-end cursor-pointer group"
             >
               <img
-                className={`${isDark && "invert-100"
-                  } group-hover:scale-105 transition-all duration-200`}
+                className={`${
+                  isDark && "invert-100"
+                } group-hover:scale-105 transition-all duration-200`}
                 src={"/assets/icon/menu.svg"}
                 alt="options"
               />
@@ -118,12 +124,13 @@ function Navbar() {
 
             <div
               onClick={changeTheme}
-              className=" invert  w-8  flex items-center justify-end cursor-pointer group"
+              className=" invert  w-6  flex items-center justify-end cursor-pointer group"
             >
               <img
                 alt="change theme"
-                className={`${isDark && "invert-100"
-                  } group-hover:scale-105 transition-all duration-200`}
+                className={`${
+                  isDark && "invert-100"
+                } group-hover:scale-105 transition-all duration-200`}
                 src={isDark ? "/assets/icon/sun.svg" : "assets/icon/moon.svg"}
               />
             </div>

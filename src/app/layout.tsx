@@ -6,41 +6,75 @@ import PageTransition from "../components/pageTransition";
 import "../index.css";
 import Head from "next/head";
 import { ThemeContext } from "./themeContext";
+import { LanguageContext, Locale, getSavedLocale } from "./languageContext";
+import i18n from "../lib/i18n";
 import Script from "next/script";
+import { Toaster } from "sonner";
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const [isDark, setIsDark] = React.useState(false);
+  const [locale, setLocaleState] = React.useState<Locale>("pt-BR");
 
   React.useEffect(() => {
-    const theme = localStorage.getItem("theme")
-    setIsDark(theme === "dark" ? true : false)
-  }, [])
-  const [isDark, setIsDark] = React.useState(false);
+    const theme = localStorage.getItem("theme");
+    setIsDark(theme === "dark" ? true : false);
+
+    const savedLocale = getSavedLocale();
+    setLocaleState(savedLocale);
+    i18n.changeLanguage(savedLocale);
+  }, []);
+
+  React.useEffect(() => {
+    localStorage.setItem("portfolio-language", locale);
+    i18n.changeLanguage(locale);
+  }, [locale]);
+
+  const setLocale = (newLocale: Locale) => {
+    setLocaleState(newLocale);
+  };
 
   const changeTheme = () => {
     setIsDark((prev) => {
-
       if (prev === true) {
-        localStorage.setItem("theme", "light")
+        localStorage.setItem("theme", "light");
         return false;
       } else {
-        localStorage.setItem("theme", "dark")
+        localStorage.setItem("theme", "dark");
         return true;
       }
     });
   };
 
   return (
-    <html lang="pt">
+    <html lang={locale}>
       <Head>
         <title>Artttur</title>
         <meta
           name="description"
           content="Developer based in Belo Horizonte specializing in web development, front-end technologies, and creating interactive digital experiences. Passionate about technology, art, and innovative projects."
         />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/site.webmanifest"></link>
         <Script
           id="microsoft-clarity"
           strategy="afterInteractive"
@@ -74,9 +108,12 @@ export default function RootLayout({
       </Head>
       <body>
         <div id="root">
-          <ThemeContext.Provider value={{ isDark, changeTheme }}>
-            <PageTransition>{children}</PageTransition>
-          </ThemeContext.Provider>
+          <LanguageContext.Provider value={{ locale, setLocale }}>
+            <ThemeContext.Provider value={{ isDark, changeTheme }}>
+              <PageTransition>{children}</PageTransition>
+              <Toaster richColors />
+            </ThemeContext.Provider>
+          </LanguageContext.Provider>
         </div>
       </body>
     </html>

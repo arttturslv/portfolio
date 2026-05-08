@@ -3,14 +3,17 @@
 import gsap from "gsap";
 import { useRef } from "react";
 import { TextPlugin } from "gsap/TextPlugin";
+import { useTranslation } from "react-i18next";
 
 function Cite() {
+  const { t } = useTranslation();
+
   gsap.registerPlugin(TextPlugin);
 
   const textRef = useRef<HTMLHeadingElement | null>(null);
 
   const originalText = "Legatum est sensus vitae";
-  const decryptedText = "Legado é o sentido da vida";
+  const decryptedText = t("cite.quote");
 
   const handleMouseEnter = () => {
     if (textRef.current) {

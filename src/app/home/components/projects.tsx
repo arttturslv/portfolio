@@ -11,7 +11,7 @@ const projects = [
       "Plataforma focada na experiência de criação de mensagens customizadas para marcar momentos.",
     techStack: ["React", "Node.js", "Express", "MongoDB"],
     image: "/assets/images/projects/congrats/congrats-full.png",
-    url: "/projects/#congrats",
+    url: "/projects#congrats",
   },
   {
     name: "POSTAAI",
@@ -19,7 +19,7 @@ const projects = [
     description:
       "Aplicação de mural virtual colaborativo para compartilhamento de anotações, recados e desenhos.",
     image: "/assets/images/projects/postaai/postaai-full.png",
-    url: "/projects/#postaai",
+    url: "/projects#postaai",
   },
   {
     name: "MINIMIZAAI",
@@ -28,7 +28,7 @@ const projects = [
     description:
       "Ferramenta simples para gerar, armazenar e compartilhar links curtos.",
     image: "/assets/images/projects/minimizaai/minimizaai-full.png",
-    url: "/projects/#minimizaai",
+    url: "/projects#minimizaai",
   },
 ];
 
@@ -46,22 +46,23 @@ export default function Projects() {
           return (
             <div
               id={project.name}
-              className={`flex max-lg:flex-col gap-4 sm:gap-8 ${isOdd ? "flex-row-reverse" : "flex-row"
-                }`}
+              className={`flex max-lg:flex-col gap-4 sm:gap-8 ${
+                isOdd ? "flex-row-reverse" : "flex-row"
+              }`}
             >
               <Link
                 href={project.url}
-                className="cursor-pointer group relative w-full h-[250px] sm:h-[500px] bg-red-200"
+                className="cursor-pointer group relative w-full h-[250px] sm:h-[500px] "
               >
                 {" "}
                 <Image
                   src={project.image}
                   alt={project.name}
                   fill
-                  className="object-cover overflow-hidden  object-top shadow-lg  bg-red-400"
+                  className="object-cover overflow-hidden group-hover:scale-[99.8%] group-hover:rounded-md transition-all duration-1000 object-top shadow-lg  "
                 />
                 <div className="bg-gradient-to-t from-[#000]/70  flex items-center justify-end z-20 absolute bottom-0 w-full h-20 px-6">
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-tl  transition-all duration-300 from-[#000]/30 group-hover:from-[#000]/50 flex items-center justify-center ">
+                  <div className="w-14 h-14 rounded-full bg-gradient-to-tl  transition-all duration-300 from-[#000]/30 group-hover:from-[#000]/70 flex items-center justify-center ">
                     <img
                       src="assets/icon/arrow-up-right.svg"
                       className="size-8 invert-100 group-hover:invert-75 transition-all duration-200"

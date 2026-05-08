@@ -5,29 +5,29 @@ import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 import GalleryList from "./components/galleryList";
 import { ThemeContext } from "../themeContext";
+import { useTranslation } from "react-i18next";
 
 export default function DoodlesPage() {
   const { isDark } = useContext(ThemeContext);
+  const { t } = useTranslation();
 
   return (
     <div
-      className={`${isDark ? "dark" : "light"
-        } w-full flex flex-col items-center justify-center bg-primary-light dark:bg-primary-dark text-primary-dark dark:text-primary-light min-h-screen`}
+      className={`${
+        isDark ? "dark" : "light"
+      } w-full flex flex-col items-center justify-center bg-primary-light dark:bg-primary-dark text-primary-dark dark:text-primary-light min-h-screen`}
     >
       <Navbar />
 
       <div className="w-full max-w-[1400px] px-2 sm:px-12 flex-1">
         <section className="text-center my-36">
           <h1 className="text-6xl sm:text-8xl font-bold font-khan fade-element">
-            Gallery
+            {t("gallery-page.title")}
           </h1>
           <p className="max-w-[60%] text-lg sm:text-xl font-light mx-auto fade-element">
-            Semi-confidential space. A collection of my solified thoughts
+            {t("gallery-page.description")}
           </p>
         </section>
-
-        {/* Client-side Gallery */}
-
         <GalleryList />
       </div>
 

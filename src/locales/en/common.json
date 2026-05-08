@@ -1,0 +1,62 @@
+{
+  "menu": {
+    "home": "home",
+    "projects": "projects",
+    "gallery": "gallery"
+  },
+  "language": {
+    "pt": "PT-BR",
+    "en": "EN"
+  },
+  "hero": {
+    "greeting": "Hi, my name is"
+  },
+  "about": {
+    "talkToMe": "talk to me",
+    "description-one": "I'm a developer based in Belo Horizonte, working at ",
+    "description-two": ", dedicated to creating digital experiences and turning ideas into code. I believe in using my skills to make the world a better place.",
+    "description-three": "Beyond the screen, I'm fascinated by nature, food, art, technology, and the potential of our species."
+  },
+  "contact": {
+    "nameLabel": "What should I call you?",
+    "emailLabel": "What is your most used email?",
+    "subjectLabel": "What is the subject?",
+    "namePlaceholder": "your name",
+    "emailPlaceholder": "your email",
+    "subjectPlaceholder": "your subject",
+    "send": "Send",
+    "sending": "Sending...",
+    "fillFields": "Please fill out all fields.",
+    "sentSuccess": "Email sent successfully!",
+    "sendError": "Error sending email.",
+    "unknownError": "Unknown error while sending email.",
+    "nameInvalid": "Enter a valid name*",
+    "emailInvalid": "Enter a valid email*"
+  },
+  "skills": {
+    "title": "here some of my best skills"
+  },
+  "cite": {
+    "quote": "Legacy is the purpose of life."
+  },
+  "footer": {
+    "tags": {
+      "developer": "developer",
+      "artist": "self-proclaimed artist",
+      "tech": "tech passionated",
+      "curious": "curious",
+      "trying": "trying things"
+    },
+    "rights": "all rights belong to creator © 2026",
+    "socials": "Socials"
+  },
+  "gallery": {
+    "title": "Gallery",
+    "description": "Digital junk drawer. A bit of everything."
+  },
+  "projects-page": {
+    "title": "Projects",
+    "description": "Made with love, inspiration and effort",
+    "done": "That's all Folks!"
+  }
+}
