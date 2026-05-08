@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { gsap } from "gsap";
+import { useTranslation } from "react-i18next";
 import { sendContactAction } from "../../../actions/contact-me";
 import { toast } from "sonner";
 
@@ -16,17 +17,18 @@ interface InputValidation {
   message: string;
 }
 
-export const NAME_VALIDATION: InputValidation = {
-  regex: /^[A-Za-zÀ-ÖØ-öø-ÿ\s]{2,}$/,
-  message: "Digite um nome válido*",
-};
-
-export const EMAIL_VALIDATION: InputValidation = {
-  regex: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-  message: "Digite um e-mail válido*",
-};
-
 export default function Contact({ closeContact, showContact }: ContactProps) {
+  const { t } = useTranslation();
+
+  const NAME_VALIDATION: InputValidation = {
+    regex: /^[A-Za-zÀ-ÖØ-öø-ÿ\s]{2,}$/,
+    message: t("contact.nameInvalid"),
+  };
+
+  const EMAIL_VALIDATION: InputValidation = {
+    regex: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+    message: t("contact.emailInvalid"),
+  };
   const overlayRef = React.useRef<HTMLDivElement>(null);
 
   const [name, setName] = useState("");
@@ -87,7 +89,7 @@ export default function Contact({ closeContact, showContact }: ContactProps) {
 
   const sendEmail = async () => {
     if (!name || !email || !subject) {
-      toast.error("Por favor, preencha todos os campos.");
+      toast.error(t("contact.fillFields"));
       return;
     }
 
@@ -101,14 +103,14 @@ export default function Contact({ closeContact, showContact }: ContactProps) {
       });
 
       if (success) {
-        toast.success("E-mail enviado com sucesso!");
+        toast.success(t("contact.sentSuccess"));
         handleClose();
       } else {
-        toast.error("Erro desconhecido ao enviar e-mail.");
+        toast.error(t("contact.unknownError"));
       }
       console.log(success);
-    } catch (error) {
-      toast.error("Erro ao enviar e-mail.");
+    } catch {
+      toast.error(t("contact.sendError"));
     } finally {
       setLoading(false);
     }
@@ -139,12 +141,12 @@ export default function Contact({ closeContact, showContact }: ContactProps) {
           <div className="space-y-3">
             <div>
               <label htmlFor="name" className="text-md md:text-md font-light  ">
-                Como posso te chamar?
+                {t("contact.nameLabel")}
               </label>
               <input
                 name="name"
                 className="border-b-[2px] p-0 md:pt-2 focus:outline-0  placeholder:text-xl md:placeholder:text-4xl text-xl md:text-4xl border-gray-800 w-full"
-                placeholder="{seu nome}"
+                placeholder={t("contact.namePlaceholder")}
                 type="text"
                 value={name}
                 maxLength={32}
@@ -165,12 +167,12 @@ export default function Contact({ closeContact, showContact }: ContactProps) {
                 htmlFor="email"
                 className="text-md md:text-md font-light  "
               >
-                Qual seu correio eletrônico mais usado?
+                {t("contact.emailLabel")}
               </label>
               <input
                 name="email"
                 className="border-b-[2px] p-0 md:pt-2 focus:outline-0  placeholder:text-xl md:placeholder:text-4xl text-xl md:text-4xl border-gray-800 w-full"
-                placeholder="{seu e-mail}"
+                placeholder={t("contact.emailPlaceholder")}
                 type="email"
                 value={email}
                 onChange={(e) =>
@@ -190,12 +192,12 @@ export default function Contact({ closeContact, showContact }: ContactProps) {
                 htmlFor="subject"
                 className="text-md md:text-md font-light  "
               >
-                Qual assunto?
+                {t("contact.subjectLabel")}
               </label>
               <input
                 name="subject"
                 className="border-b-[2px] p-0 md:pt-2 focus:outline-0  placeholder:text-xl md:placeholder:text-4xl text-xl md:text-4xl border-gray-800 w-full"
-                placeholder="{seu assunto}"
+                placeholder={t("contact.subjectPlaceholder")}
                 type="text"
                 value={subject}
                 onChange={(e) => setSubject(e.currentTarget.value)}
@@ -209,7 +211,7 @@ export default function Contact({ closeContact, showContact }: ContactProps) {
               type="button"
               onClick={sendEmail}
             >
-              {!loading ? "Enviar" : "Enviando..."}
+              {!loading ? t("contact.send") : t("contact.sending")}
             </button>
           </div>
         </form>

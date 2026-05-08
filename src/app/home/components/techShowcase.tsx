@@ -3,13 +3,15 @@
 import { useContext } from "react";
 import Tooltip from "../../../components/tooltip";
 import { ThemeContext } from "../../themeContext";
+import { useTranslation } from "react-i18next";
 
 export default function TechShowcase() {
   const { isDark } = useContext(ThemeContext);
+  const { t } = useTranslation();
 
   return (
     <div className=" fade-element space-y-6  flex flex-col items-center">
-      <h4>here some of my best skills</h4>
+      <h4>{t("skills.title")}</h4>
       <div
         className={`${
           isDark && "invert"

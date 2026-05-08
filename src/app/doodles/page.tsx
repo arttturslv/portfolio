@@ -5,9 +5,11 @@ import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 import GalleryList from "./components/galleryList";
 import { ThemeContext } from "../themeContext";
+import { useTranslation } from "react-i18next";
 
 export default function DoodlesPage() {
   const { isDark } = useContext(ThemeContext);
+  const { t } = useTranslation();
 
   return (
     <div
@@ -20,10 +22,10 @@ export default function DoodlesPage() {
       <div className="w-full max-w-[1400px] px-2 sm:px-12 flex-1">
         <section className="text-center my-36">
           <h1 className="text-6xl sm:text-8xl font-bold font-khan fade-element">
-            Gallery
+            {t("gallery-page.title")}
           </h1>
           <p className="max-w-[60%] text-lg sm:text-xl font-light mx-auto fade-element">
-            Semi-confidential space. A bit of everything.
+            {t("gallery-page.description")}
           </p>
         </section>
         <GalleryList />

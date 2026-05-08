@@ -1,13 +1,15 @@
 /** @format */
 import React, { useLayoutEffect } from "react";
 import { gsap } from "gsap";
-import Link from "next/link";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
+import Link from "next/link";
 
 interface AboutProps {
   openContact: () => void;
 }
 export default function About({ openContact }: AboutProps) {
+  const { t } = useTranslation();
   const containerRef = React.useRef<HTMLDivElement>(null);
   const tl = React.useRef<gsap.core.Timeline>(null);
 
@@ -130,7 +132,7 @@ export default function About({ openContact }: AboutProps) {
 
         <div className="space-y-3 fade-element ">
           <p className="lg:text-4xl md:text-3xl text-2xl font-light">
-            I’m a developer based in Belo Horizonte, working at{" "}
+            {t("about.description-one")}
             <Link
               target="_blank"
               href="https://www.linkedin.com/company/facss-io/"
@@ -138,18 +140,16 @@ export default function About({ openContact }: AboutProps) {
             >
               @FACSS
             </Link>
-            , dedicated to crafting digital experiences, putting ideas into
-            code. I believe in using my skills to make the world a better place.
+            {t("about.description-two")}
             <br></br>
-            Beyond the screen, I'm fascinated by things like nature, food, art,
-            technology & the potential of our species.
+            {t("about.description-three")}
           </p>
 
           <a
             onClick={openContact}
             className="underline cursor-pointer p-0 m-0 bg-transparent border-none transition-all duration-200 hyperlink"
           >
-            talk to me
+            {t("about.talkToMe")}
           </a>
         </div>
       </div>

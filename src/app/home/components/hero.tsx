@@ -1,10 +1,14 @@
 /** @format */
 
+import { useTranslation } from "react-i18next";
+
 export default function Hero() {
+  const { t } = useTranslation();
+
   return (
     <main className="h-screen  flex justify-center space-y-2 flex-col items-center">
       <div className="flex flex-col gap-2 items-center justify-center fade-element ">
-        <p className=" text-3xl max-sm:text-2xl">Olá, meu nome é</p>
+        <p className=" text-3xl max-sm:text-2xl">{t("hero.greeting")}</p>
 
         <span className="flex group ">
           <h1 className="font-khan font-extrabold text-9xl max-sm:text-8xl">

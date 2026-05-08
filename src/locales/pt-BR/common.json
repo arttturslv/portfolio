@@ -1,0 +1,62 @@
+{
+  "menu": {
+    "home": "inicio",
+    "projects": "projetos",
+    "gallery": "galeria"
+  },
+  "language": {
+    "pt": "PT-BR",
+    "en": "EN"
+  },
+  "hero": {
+    "greeting": "Olá, meu nome é"
+  },
+  "about": {
+    "talkToMe": "fale comigo",
+    "description-one": "Sou desenvolvedor de Belo Horizonte, atualmente trabalhando na ",
+    "description-two": ", dedicado a criar experiências digitais e transformar ideias em código. Busco usar minhas habilidades para tornar o mundo um lugar melhor. ",
+    "description-three": "Além da programação, sou fascinado por natureza, comida, arte, tecnologia e pelo potencial da nossa espécie."
+  },
+  "contact": {
+    "nameLabel": "Como posso te chamar?",
+    "emailLabel": "Qual seu e-mail mais usado?",
+    "subjectLabel": "Qual assunto?",
+    "namePlaceholder": "seu nome",
+    "emailPlaceholder": "seu e-mail",
+    "subjectPlaceholder": "seu assunto",
+    "send": "Enviar",
+    "sending": "Enviando...",
+    "fillFields": "Por favor, preencha todos os campos.",
+    "sentSuccess": "E-mail enviado com sucesso!",
+    "sendError": "Erro ao enviar e-mail.",
+    "unknownError": "Erro desconhecido ao enviar e-mail.",
+    "nameInvalid": "Digite um nome válido*",
+    "emailInvalid": "Digite um e-mail válido*"
+  },
+  "skills": {
+    "title": "algumas das minhas habilidades"
+  },
+  "cite": {
+    "quote": "Legado é o sentido da vida"
+  },
+  "footer": {
+    "tags": {
+      "developer": "desenvolvedor",
+      "artist": "artista",
+      "tech": "fã de tecnologia",
+      "curious": "curioso",
+      "trying": "tentando coisas"
+    },
+    "rights": "todos os direitos reservados © 2026",
+    "socials": "Redes"
+  },
+  "gallery-page": {
+    "title": "Galeria",
+    "description": "Rascunhos digitais. Um pouco de tudo."
+  },
+  "projects-page": {
+    "title": "Projetos",
+    "description": "Feitos com paixão, inspiração e esforço.",
+    "done": "Isso é tudo, pessoal!"
+  }
+}
