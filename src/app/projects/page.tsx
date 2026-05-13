@@ -7,6 +7,7 @@ import { ThemeContext } from "../themeContext";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import Footer from "../../components/footer";
+import env from "@/env.client";
 
 export default function ProjectsPage() {
   const { t } = useTranslation();
@@ -36,9 +37,7 @@ export default function ProjectsPage() {
   React.useEffect(() => {
     async function fetchProjects() {
       try {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_SITE_URL}/api/projects`,
-        );
+        const res = await fetch(`${env.NEXT_PUBLIC_SITE_URL}/api/projects`);
         if (!res.ok) throw new Error("Erro ao buscar projetos");
         const data = await res.json();
         setProjects(data);
