@@ -43,7 +43,7 @@ export default function Footer() {
               </a>
 
               <a
-                href="https://www.instagram.com/artur.pine"
+                href="https://www.instagram.com/artur.webp"
                 target="_blank"
                 className="hover:underline transition-all duration-200 hyperlink"
               >

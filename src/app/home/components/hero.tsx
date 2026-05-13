@@ -49,14 +49,14 @@ export default function Hero() {
           </a>
 
           <a
-            href="https://www.instagram.com/artur.pine"
+            href="https://www.instagram.com/artur.webp"
             target="_blank"
             className="hover:underline transition-all cursor-pointer flex group duration-200 py-1 px-2 "
           >
             <label className="cursor-pointer">instagram</label>
             <label className="overflow-hidden cursor-pointer max-w-0 group-hover:max-w-[5.4rem] transition-all duration-400 ease-out">
               {" "}
-              /artur.pine
+              /artur.webp
             </label>
           </a>
         </div>

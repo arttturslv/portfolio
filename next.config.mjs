@@ -8,6 +8,14 @@ const nextConfig = {
   distDir: "dist", // Changes the build output directory to `./dist/`.
   images: {
     domains: ["i.imgur.com"], // adiciona o domínio da imagem
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "i.imgur.com",
+        port: "",
+        pathname: "/**",
+      },
+    ],
   },
 };
 

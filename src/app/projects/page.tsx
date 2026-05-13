@@ -64,7 +64,7 @@ export default function ProjectsPage() {
     >
       <Navbar />
 
-      <div className="w-full max-w-[1400px] px-2 sm:px-12">
+      <div className="w-full max-w-[1400px] px-2 sm:px-12 h-full">
         <section className="fade-element w-full gap-3 text-center flex flex-col items-center my-36">
           <h1 className="text-6xl sm:text-8xl font-bold font-khan">
             {t("projects-page.title")}
@@ -75,20 +75,18 @@ export default function ProjectsPage() {
         </section>
 
         {loading ? (
-          <p className="text-center">Loading projects...</p>
+          <p className="text-center h-full">Loading projects...</p>
         ) : error ? (
           <p>Error: {error}</p>
         ) : (
           <ProjectsList projects={projects} />
         )}
 
-        {!loading && (
-          <section className="my-48 flex justify-center">
-            <h4 className="sm:text-xl text-2xl text-center">
-              {t("projects-page.done")}
-            </h4>
-          </section>
-        )}
+        <section className="my-48 flex justify-center">
+          <h4 className="sm:text-xl text-2xl text-center">
+            {!loading && t("projects-page.done")}
+          </h4>
+        </section>
       </div>
       <Footer />
     </div>
