@@ -5,7 +5,6 @@ import React, { useContext } from "react";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { ThemeContext } from "../app/themeContext";
-import LanguageSwitcher from "./LanguageSwitcher";
 
 function Navbar() {
   const { isDark, changeTheme } = useContext(ThemeContext);
@@ -20,7 +19,7 @@ function Navbar() {
 
   return (
     <header className="w-full  flex justify-center ">
-      <nav className="max-w-[1400px]  items-center w-full flex h-10 px-4  mx-4 sm:mx-12  ">
+      <nav className="max-w-[1400px]  items-center w-full flex h-12 px-4  mx-4 sm:mx-12  ">
         <Link href="/">
           <span className="flex group w-16 opacity-0">
             <h1 className="font-khan font-extrabold text-2xl ">Art</h1>
@@ -108,7 +107,6 @@ function Navbar() {
           </div>
 
           <div className="flex justify-end items-center gap-2">
-            <LanguageSwitcher />
             <div
               onClick={toggleMenu}
               className=" sm:hidden w-6  flex items-center justify-end cursor-pointer group"

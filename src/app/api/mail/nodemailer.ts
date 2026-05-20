@@ -1,5 +1,6 @@
 /** @format */
 import nodemailer from "nodemailer";
+import env from "@/env.server";
 
 export type SendEmailPayload = {
   subject: string;
@@ -7,8 +8,8 @@ export type SendEmailPayload = {
 };
 
 export const mailConfig = {
-  from: process.env.MAIL_FROM,
-  to: process.env.MAIL_TO,
+  from: env.MAIL_FROM,
+  to: env.MAIL_TO,
 };
 
 const transporter = nodemailer.createTransport({
@@ -18,8 +19,8 @@ const transporter = nodemailer.createTransport({
   connectionTimeout: 10000,
   greetingTimeout: 10000,
   auth: {
-    user: process.env.APP_USER,
-    pass: process.env.APP_PASSWORD,
+    user: env.APP_USER,
+    pass: env.APP_PASSWORD,
   },
 });
 

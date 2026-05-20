@@ -10,6 +10,7 @@ import { LanguageContext, Locale, getSavedLocale } from "./languageContext";
 import i18n from "../lib/i18n";
 import Script from "next/script";
 import { Toaster } from "sonner";
+import env from "@/env.client";
 
 export default function RootLayout({
   children,
@@ -84,14 +85,14 @@ export default function RootLayout({
                   c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
                   t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
                   y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-              })(window, document, "clarity", "script", "${process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID}");
+              })(window, document, "clarity", "script", "${env.NEXT_PUBLIC_CLARITY_PROJECT_ID}");
             `,
           }}
         />
 
         <Script
           async
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_ANALYTICS_ID}`}
+          src={`https://www.googletagmanager.com/gtag/js?id=${env.NEXT_PUBLIC_ANALYTICS_ID}`}
         ></Script>
         <Script
           id="google-analytics"
@@ -101,7 +102,7 @@ export default function RootLayout({
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', "${process.env.NEXT_PUBLIC_ANALYTICS_ID}");
+              gtag('config', "${env.NEXT_PUBLIC_ANALYTICS_ID}");
             `,
           }}
         />

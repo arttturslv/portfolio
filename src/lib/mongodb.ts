@@ -1,8 +1,9 @@
 /** @format */
 
+import env from "@/env.server";
 import mongoose, { Mongoose } from "mongoose";
 
-const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_URI = env.MONGODB_URI;
 
 interface MongooseCache {
   conn: Mongoose | null;
@@ -23,7 +24,7 @@ if (!global.mongoose) {
 
 async function dbConnect(): Promise<Mongoose> {
   if (!MONGODB_URI) {
-    throw new Error("⚠️ Defina MONGODB_URI em .env.local");
+    throw new Error("⚠️ Defina MONGODB_URI em .env");
   }
 
   if (cached.conn) return cached.conn;
