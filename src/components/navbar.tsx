@@ -5,7 +5,6 @@ import React, { useContext } from "react";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { ThemeContext } from "../app/themeContext";
-import LanguageSwitcher from "./LanguageSwitcher";
 
 function Navbar() {
   const { isDark, changeTheme } = useContext(ThemeContext);
@@ -108,7 +107,6 @@ function Navbar() {
           </div>
 
           <div className="flex justify-end items-center gap-2">
-            <LanguageSwitcher />
             <div
               onClick={toggleMenu}
               className=" sm:hidden w-6  flex items-center justify-end cursor-pointer group"
