@@ -9,13 +9,14 @@
     "start": "next start"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "envalid": "^8.1.1",
     "gsap": "^3.13.0",
     "mongoose": "^8.18.2",
-    "next": "^15.5.4",
+    "next": "^16.2.6",
     "nodemailer": "^8.0.7",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
     "react-i18next": "^15.7.3",
     "react-router": "^7.8.2",
     "react-router-hash-link": "^2.4.3",

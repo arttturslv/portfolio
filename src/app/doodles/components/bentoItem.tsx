@@ -2,7 +2,7 @@
 
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import ImageViewer from "../../../components/imageViewer";
 import WaveformPlayer from "../../../components/Wave";

@@ -38,9 +38,15 @@ export default function Contact({ closeContact, showContact }: ContactProps) {
   const [emailError, setEmailError] = useState<string | null>(null);
 
   const [loading, setLoading] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   React.useEffect(() => {
-    if (showContact) {
+    setMounted(true);
+    return () => setMounted(false);
+  }, []);
+
+  React.useEffect(() => {
+    if (showContact && mounted) {
       document.body.style.overflow = "hidden";
 
       gsap.fromTo(
@@ -49,9 +55,9 @@ export default function Contact({ closeContact, showContact }: ContactProps) {
         { opacity: 1, duration: 0.3, left: 0 },
       );
     }
-  }, [showContact]);
+  }, [showContact, mounted]);
 
-  if (!showContact) return null;
+  if (!showContact || !mounted) return null;
 
   const handleClose = () => {
     document.body.style.overflow = "auto";
@@ -232,6 +238,6 @@ export default function Contact({ closeContact, showContact }: ContactProps) {
         </div>
       </div>
     </div>,
-    document.getElementById("root") as HTMLElement,
+    document.body,
   );
 }
