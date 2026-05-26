@@ -1,6 +1,6 @@
 /** @format */
 "use client";
-import React, { useContext } from "react";
+import { useContext } from "react";
 import Navbar from "../../components/navbar";
 import Footer from "../../components/footer";
 import GalleryList from "./components/galleryList";

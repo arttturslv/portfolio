@@ -2,7 +2,6 @@
 
 "use client";
 
-import React from "react";
 import { useLanguage } from "../app/languageContext";
 
 // const languages = [
