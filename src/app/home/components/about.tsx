@@ -3,7 +3,6 @@ import React, { useLayoutEffect } from "react";
 import { gsap } from "gsap";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
-import Link from "next/link";
 
 interface AboutProps {
   openContact: () => void;
