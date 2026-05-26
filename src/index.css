@@ -1,0 +1,41 @@
+/** @format */
+
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Supreme";
+  src: url("/fonts/Supreme.ttf") format("truetype");
+  font-weight: 100 900; /* se for variable font */
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Khand";
+  src: url("/fonts/Khand.ttf") format("truetype");
+  font-weight: 100 900; /* idem */
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-khan: "Khand", sans-serif;
+  --font-sans: "Supreme", sans-serif;
+  --color-primary-dark: #0c090d; /* sem aspas */
+  --color-primary-light: #f1f2f6;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  scroll-behavior: smooth;
+}
+
+@layer components {
+  .hyperlink {
+    @apply hover:text-orange-800 dark:hover:text-orange-600;
+  }
+  .facss {
+    @apply dark:text-green-600 text-green-950;
+  }
+}

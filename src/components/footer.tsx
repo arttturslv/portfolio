@@ -1,0 +1,61 @@
+/** @format */
+
+import Link from "next/link";
+import { useTranslation } from "react-i18next";
+
+export default function Footer() {
+  const { t } = useTranslation();
+
+  return (
+    <footer className=" w-full flex justify-center">
+      <div className="max-w-[1400px] w-full px-4 sm:px-12 space-y-4 py-2 max-sm:space-y-6    ">
+        <section className="flex justify-between sm:flex-row flex-col max-sm:space-y-4">
+          <div className=" w-full sm:w-60">
+            <p className="max-sm:text-center ">
+              {t("footer.tags.developer")} |{" "}
+              <Link
+                href="/doodles"
+                className="hover:underline transition-all duration-200 hyperlink"
+              >
+                {t("footer.tags.artist")}
+              </Link>{" "}
+              | {t("footer.tags.tech")} | {t("footer.tags.curious")} |{" "}
+              {t("footer.tags.trying")}
+            </p>
+          </div>
+          <div>
+            <span className="max-sm:hidden">{t("footer.socials")}</span>
+            <div className="w-full max-sm:hidden gap-2 flex justify-center">
+              <a
+                href="https://github.com/arttturslv"
+                target="_blank"
+                className="hover:underline transition-all duration-200 hyperlink"
+              >
+                github
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/arttturslv/"
+                target="_blank"
+                className="hover:underline transition-all duration-200 hyperlink"
+              >
+                linkedin
+              </a>
+
+              <a
+                href="https://www.instagram.com/artur.webp"
+                target="_blank"
+                className="hover:underline transition-all duration-200 hyperlink"
+              >
+                instagram
+              </a>
+            </div>
+          </div>
+        </section>
+        <section className="flex justify-center">
+          <span className="max-sm:text-sm">{t("footer.rights")}</span>{" "}
+        </section>
+      </div>
+    </footer>
+  );
+}
