@@ -1,6 +1,6 @@
 /** @format */
 
-module.exports = {
+const config = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}", // se tiver App Router
     "./pages/**/*.{js,ts,jsx,tsx,mdx}", // se tiver Pages Router
@@ -11,3 +11,5 @@ module.exports = {
   },
   plugins: [],
 };
+
+export default config;
