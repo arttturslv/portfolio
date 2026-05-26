@@ -45,6 +45,7 @@ export default function Projects() {
 
           return (
             <div
+              key={project.name}
               id={project.name}
               className={`flex max-lg:flex-col gap-4 sm:gap-8 ${
                 isOdd ? "flex-row-reverse" : "flex-row"

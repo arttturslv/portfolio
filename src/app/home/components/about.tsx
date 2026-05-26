@@ -133,13 +133,6 @@ export default function About({ openContact }: AboutProps) {
         <div className="space-y-3 fade-element ">
           <p className="lg:text-4xl md:text-3xl text-2xl font-light">
             {t("about.description-one")}
-            <Link
-              target="_blank"
-              href="https://www.linkedin.com/company/facss-io/"
-              className=" hover:underline transition-all duration-200 font-medium facss hyperlink "
-            >
-              @FACSS
-            </Link>
             {t("about.description-two")}
             <br></br>
             {t("about.description-three")}

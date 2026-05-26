@@ -1,121 +1,45 @@
 /** @format */
-"use client";
 
-import React from "react";
-import PageTransition from "../components/pageTransition";
+import type { Metadata } from "next";
 import "../index.css";
-import Head from "next/head";
-import { ThemeContext } from "./themeContext";
-import { LanguageContext, Locale, getSavedLocale } from "./languageContext";
-import i18n from "../lib/i18n";
-import Script from "next/script";
-import { Toaster } from "sonner";
-import env from "@/env.client";
+
+import { Analytics } from "@vercel/analytics/next";
+import Providers from "./providers";
+
+export const metadata: Metadata = {
+  title: "Artttur",
+  description:
+    "Desenvolvedor front-end de Belo Horizonte focado em criar experiências digitais modernas, performáticas e interativas.",
+  icons: {
+    apple: "/apple-touch-icon.png",
+    icon: [
+      {
+        url: "/favicon-32x32.png",
+        sizes: "32x32",
+        type: "image/png",
+      },
+      {
+        url: "/favicon-16x16.png",
+        sizes: "16x16",
+        type: "image/png",
+      },
+    ],
+  },
+  manifest: "/site.webmanifest",
+};
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [isDark, setIsDark] = React.useState(false);
-  const [locale, setLocaleState] = React.useState<Locale>("pt-BR");
-
-  React.useEffect(() => {
-    const theme = localStorage.getItem("theme");
-    setIsDark(theme === "dark" ? true : false);
-
-    const savedLocale = getSavedLocale();
-    setLocaleState(savedLocale);
-    i18n.changeLanguage(savedLocale);
-  }, []);
-
-  React.useEffect(() => {
-    localStorage.setItem("portfolio-language", locale);
-    i18n.changeLanguage(locale);
-  }, [locale]);
-
-  const setLocale = (newLocale: Locale) => {
-    setLocaleState(newLocale);
-  };
-
-  const changeTheme = () => {
-    setIsDark((prev) => {
-      if (prev === true) {
-        localStorage.setItem("theme", "light");
-        return false;
-      } else {
-        localStorage.setItem("theme", "dark");
-        return true;
-      }
-    });
-  };
-
   return (
-    <html lang={locale}>
-      <Head>
-        <title>Artttur</title>
-        <meta
-          name="description"
-          content="Developer based in Belo Horizonte specializing in web development, front-end technologies, and creating interactive digital experiences. Passionate about technology, art, and innovative projects."
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/apple-touch-icon.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon-16x16.png"
-        />
-        <link rel="manifest" href="/site.webmanifest"></link>
-        <Script
-          id="microsoft-clarity"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(c,l,a,r,i,t,y){
-                  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-                  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-              })(window, document, "clarity", "script", "${env.NEXT_PUBLIC_CLARITY_PROJECT_ID}");
-            `,
-          }}
-        />
-
-        <Script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=${env.NEXT_PUBLIC_ANALYTICS_ID}`}
-        ></Script>
-        <Script
-          id="google-analytics"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', "${env.NEXT_PUBLIC_ANALYTICS_ID}");
-            `,
-          }}
-        />
-      </Head>
+    <html suppressHydrationWarning>
       <body>
-        <div id="root">
-          <LanguageContext.Provider value={{ locale, setLocale }}>
-            <ThemeContext.Provider value={{ isDark, changeTheme }}>
-              <PageTransition>{children}</PageTransition>
-              <Toaster richColors />
-            </ThemeContext.Provider>
-          </LanguageContext.Provider>
-        </div>
+        <Providers>
+          {children}
+          <Analytics />
+        </Providers>
       </body>
     </html>
   );
